@@ -11,7 +11,7 @@ description: '{{ mcp-hub-name }} is a {{ foundation-models-full-name }} tool for
 
 _{{ mcp-hub-name }}_ is a {{ foundation-models-name }} tool for creating, managing, and monitoring MCP servers. {{ mcp-hub-name }} allows you to hook up external MCP servers or create your own either from scratch or using pre-configured templates.
 
-To access MCP servers in {{ mcp-hub-name }}, you will also need the `serverless.mcpGateways.invoker` [role](../../security/index.md#serverless-mcpGateways-invoker) or higher. To access external MCP servers and MCP servers created from a template, you will additionally need the `serverless.mcpGateways.anonymousInvoker` [role](../../security/index.md#serverless-mcpGateways-anonymousInvoker) or higher.
+{% include [roles-to-invoke-mcp](../../../_includes/ai-studio/mcp-hub/roles-to-invoke-mcp.md) %}
 
 ## MCP servers {#servers}
 
@@ -88,3 +88,5 @@ In the MCP server settings, you can enable [logging](../../../logging/concepts/l
 * [{#T}](../../operations/mcp-servers/connect-external.md)
 * [{#T}](../../operations/mcp-servers/create-from-template.md)
 * [{#T}](../../operations/mcp-servers/create-brand-new.md)
+* [{#T}](../../operations/mcp-servers/get-server-info.md)
+* [{#T}](../../operations/mcp-servers/delete-server.md)

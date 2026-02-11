@@ -23,14 +23,24 @@ items:
             href: operations/host-migration.md
           - name: Управление резервными копиями
             href: operations/cluster-backups.md
+          - name: Управление доступом к кластеру
+            href: operations/cluster-access.md
           - name: Обновление версии {{ MY }}
             href: operations/cluster-version-update.md
           - name: Удаление кластера
             href: operations/cluster-delete.md
+      - name: Подключение
+        items:
+          - name: Предварительная настройка
+            href: operations/connect/index.md
+          - name: FQDN хостов
+            href: operations/connect/fqdn.md
+          - name: Подключение из приложений
+            href: operations/connect/clients.md
+          - name: Примеры кода
+            href: operations/connect/code-examples.md
       - name: Базы данных
         items:
-          - name: Подключение к базе данных
-            href: operations/connect.md
           - name: SQL-запросы в {{ websql-full-name }}
             href: operations/web-sql-query.md
           - name: Управление базами данных

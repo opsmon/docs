@@ -1,12 +1,12 @@
 ---
 title: Creating a {{ managed-k8s-full-name }} cluster
-description: Follow this guide to create a {{ managed-k8s-name }} cluster.
+description: In this tutorial, you will learn how to create a {{ managed-k8s-name }} cluster.
 ---
 
 # Creating a {{ managed-k8s-name }} cluster
 
 
-Create a [{{ managed-k8s-name }}](../../concepts/index.md#kubernetes-cluster) cluster and then [create a node group](../node-group/node-group-create.md).
+Create a [{{ managed-k8s-name }} cluster](../../concepts/index.md#kubernetes-cluster) and then [create a node group](../node-group/node-group-create.md).
 
 To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-cluster-with-no-internet.md).
 
@@ -24,12 +24,14 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
   1. If you do not have a [network](../../../vpc/concepts/network.md#network) yet, [create one](../../../vpc/operations/network-create.md).
   1. If you do not have any [subnets](../../../vpc/concepts/network.md#subnet) yet, [create them](../../../vpc/operations/subnet-create.md) in the [availability zones](../../../overview/concepts/geo-scope.md) where the new {{ managed-k8s-name }} cluster and [node group](../../concepts/index.md#node-group) will reside.
   1. Create these [service accounts](../../../iam/operations/sa/create.md):
-     * Service account with the `k8s.clusters.agent` and `vpc.publicAdmin` [roles](../../security/index.md#yc-api) for the folder where you want to create a {{ managed-k8s-name }} cluster. This service account will be used to create resources for your {{ managed-k8s-name }} cluster.
-     * Service account with the [{{ roles-cr-puller }}](../../../container-registry/security/index.md#choosing-roles) role for the folder containing the [Docker image](../../../container-registry/concepts/docker-image.md) [registry](../../../container-registry/concepts/registry.md). Nodes will use this account to pull the required Docker images from the registry.
+      * Service account with the `k8s.clusters.agent` and `vpc.publicAdmin` [roles](../../security/index.md#yc-api) for the folder where you want to create a {{ managed-k8s-name }} cluster. This service account will be used to create resources for your {{ managed-k8s-name }} cluster.
+      * Service account with the [{{ roles-cr-puller }}](../../../container-registry/security/index.md#container-registry-images-puller) role for the folder containing the [Docker image](../../../container-registry/concepts/docker-image.md) registry in [{{ container-registry-full-name }}](../../../container-registry/concepts/index.md). Nodes will use this account to pull the required Docker images from the registry.
 
-     You can use the same service account for both operations.
+        If you want to use a [Docker image](../../../cloud-registry/concepts/docker-image.md) registry in [{{ cloud-registry-full-name }}](../../../cloud-registry/concepts/index.md), assign the [cloud-registry.artifacts.puller](../../../cloud-registry/security/index.md#cloud-registry-artifacts-puller) role to the service account.
 
-     {% include [k8s.tunnelClusters.agent role](../../../_includes/managed-kubernetes/note-tunnelClusters-agent.md) %}
+      You can use the same service account for both operations.
+
+      {% include [k8s.tunnelClusters.agent role](../../../_includes/managed-kubernetes/note-tunnelClusters-agent.md) %}
 
   1. [Create and configure the security groups](../connect/security-groups.md).
 
@@ -102,14 +104,14 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
        {% include [security-groups-alert](../../../_includes/managed-kubernetes/security-groups-alert.md) %}
 
      * `--service-account-id`: Unique ID of the [service account](../../../iam/concepts/users/service-accounts.md) for the resources. This service account will be used to create resources for your {{ managed-k8s-name }} cluster.
-     * `--node-service-account-id`: Unique ID of the service account for the [nodes](../../concepts/index.md#node-group). Nodes will use this account to pull the required [Docker images](../../../container-registry/concepts/docker-image.md) from the [registry](../../../container-registry/concepts/registry.md).
+     * `--node-service-account-id`: Unique ID of the service account for the [nodes](../../concepts/index.md#node-group). Nodes will use this account to pull the required [Docker images](../../../container-registry/concepts/docker-image.md) from the registry in {{ container-registry-full-name }}.
      * `--master-location`: [Master](../../concepts/index.md#master) configuration. Specify the availability zone and subnet where the master will reside.
 
         The number of `--master-location` parameters depends on the type of master:
 
-        * For the basic master, provide one `--master-location` parameter.
-        * For a highly available master hosted across three availability zones, provide three `--master-location` parameters. In each one, specify different availability zones and subnets.
-        * For a highly available master hosted in a single availability zone, provide three `--master-location` parameters. In each one, specify the same availability zone and subnet.
+        * For a base master, provide one `--master-location` parameter.
+        * For a highly available master placed across three availability zones, provide three `--master-location` parameters. In each one, specify different availability zones and subnets.
+        * For a highly available master placed in a single availability zone, provide three `--master-location` parameters. In each one, specify the same availability zone and subnet.
 
      * `--master-scale-policy`: [Master's computing resource](../../concepts/index.md#master-resources) configuration.
 
@@ -160,7 +162,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
           --cilium
         ```
 
-  1. To use the [{{ kms-full-name }}](../../concepts/encryption.md) encryption key for protecting sensitive data, provide the key name or ID in the {{ managed-k8s-name }} cluster creation command:
+  1. To use the [{{ kms-full-name }} encryption key](../../concepts/encryption.md) for protecting sensitive data, provide the key name or ID in the {{ managed-k8s-name }} cluster creation command:
 
      ```bash
      {{ yc-k8s }} cluster create \
@@ -196,7 +198,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
   {% include [terraform-install](../../../_includes/terraform-install.md) %}
 
   To create a {{ managed-k8s-name }} cluster:
-  1. In the configuration file, describe the properties of resources you want to create:
+  1. In the configuration file, describe the resources you want to create:
      * {{ managed-k8s-name }} cluster: Cluster description.
      * [Network](../../../vpc/concepts/network.md#network): Description of the cloud network to host the {{ managed-k8s-name }} cluster. If you already have a suitable network, you do not need to describe it again.
 
@@ -310,7 +312,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
      {% note warning %}
 
-      You cannot enable the Calico network policy controller and the Cilium tunnel mode at the same time. Also, you cannot enable them after creating a cluster.
+      You cannot enable the Calico network policy controller and the Cilium tunnel mode at the same time. You cannot enable them after creating a cluster either.
 
      {% endnote %}
 
@@ -339,9 +341,9 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
   The request body depends on the [master type](../../concepts/index.md#master):
 
-  * For the basic master, provide one `masterSpec.locations` parameter in the request.
-  * For a highly available master hosted across three availability zones, provide three `masterSpec.locations` parameters in the request. In each one, specify different availability zones and subnets.
-  * For a highly available master hosted in a single availability zone, provide three `masterSpec.locations` parameters in the request. In each one, specify the same availability zone and subnet.
+  * For a base master, provide one `masterSpec.locations` parameter in the request.
+  * For a highly available master placed across three availability zones, provide three `masterSpec.locations` parameters in the request. In each one, specify different availability zones and subnets.
+  * For a highly available master placed in a single availability zone, provide three `masterSpec.locations` parameters in the request. In each one, specify the same availability zone and subnet.
 
   {% include [note-another-catalog-network](../../../_includes/managed-kubernetes/note-another-catalog-network.md) %}
 
@@ -359,7 +361,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
   {% endnote %}
 
-  To use a [{{ kms-full-name }}](../../concepts/encryption.md) encryption key to protect secrets, provide its ID in the `kmsProvider.keyId` parameter.
+  To use a [{{ kms-full-name }} encryption key](../../concepts/encryption.md) to protect secrets, provide its ID in the `kmsProvider.keyId` parameter.
 
   To enable sending logs to [{{ cloud-logging-full-name }}](../../../logging/), provide the logging settings in the `masterSpec.masterLogging` parameter.
 
@@ -369,7 +371,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
 ## Examples {#examples}
 
-### Creating a {{ managed-k8s-name }} cluster with a basic master {#example-single-cluster}
+### Creating a {{ managed-k8s-name }} cluster with a base master {#example-single-cluster}
 
 {% list tabs group=instructions %}
 
@@ -384,7 +386,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
   * Service account: `myaccount`.
   * Security group ID: `{{ security-group }}`.
 
-  To create a {{ managed-k8s-name }} cluster with a basic master, run this command:
+  To create a {{ managed-k8s-name }} cluster with a base master, run this command:
 
   ```bash
   {{ yc-k8s }} cluster create \
@@ -488,7 +490,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
   }
 
   resource "yandex_kms_symmetric_key" "kms-key" {
-    # A {{ kms-full-name }} key for encrypting critical information, including passwords, OAuth tokens, and SSH keys.
+    # A {{ kms-full-name }} key for encrypting critical information, such as passwords, OAuth tokens, and SSH keys.
     name              = "kms-key"
     default_algorithm = "AES_128"
     rotation_period   = "8760h" # 1 year.
@@ -496,7 +498,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
   resource "yandex_vpc_security_group" "k8s-public-services" {
     name        = "k8s-public-services"
-    description = "Group rules allow connections to services from the internet. Apply the rules for node groups only."
+    description = "The group rules allow connections to services from the internet. Apply the rules for node groups only."
     network_id  = yandex_vpc_network.mynet.id
     ingress {
       protocol          = "TCP"
@@ -507,7 +509,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
     }
     ingress {
       protocol          = "ANY"
-      description       = "The rule allows master-to-node and node-to-node communication inside a security group."
+      description       = "The rule allows master-to-node and node-to-node interactions inside a security group."
       predefined_target = "self_security_group"
       from_port         = 0
       to_port           = 65535
@@ -575,7 +577,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
 - {{ TF }} {#tf}
 
-  Create a {{ managed-k8s-name }} cluster and its network with the following test specifications:
+  Create a {{ managed-k8s-name }} cluster and its supporting network, using the following test specifications:
 
   * Name: `k8s-ha-three-zones`.
   * Folder ID: `{{ tf-folder-id }}`.
@@ -697,7 +699,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
   }
 
   resource "yandex_kms_symmetric_key" "kms-key" {
-    # A {{ kms-full-name }} key for encrypting critical information, including passwords, OAuth tokens, and SSH keys.
+    # A {{ kms-full-name }} key for encrypting critical information, such as passwords, OAuth tokens, and SSH keys.
     name              = "kms-key"
     default_algorithm = "AES_128"
     rotation_period   = "8760h" # 1 year.
@@ -705,7 +707,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
   resource "yandex_vpc_security_group" "ha-k8s-sg" {
     name        = "ha-k8s-sg"
-    description = "Group rules ensure the basic performance of the {{ managed-k8s-name }} cluster. Apply them to the cluster and node groups."
+    description = "The group rules ensure the basic performance of the {{ managed-k8s-name }} cluster. Apply them to the cluster and node groups."
     network_id  = yandex_vpc_network.my-ha-net.id
     ingress {
       protocol          = "TCP"
@@ -716,7 +718,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
     }
     ingress {
       protocol          = "ANY"
-      description       = "The rule allows master-to-node and node-to-node communication inside a security group."
+      description       = "The rule allows master-to-node and node-to-node interactions inside a security group."
       predefined_target = "self_security_group"
       from_port         = 0
       to_port           = 65535
@@ -784,7 +786,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
 - {{ TF }} {#tf}
 
-  Create a {{ managed-k8s-name }} cluster and its network with the following test specifications:
+  Create a {{ managed-k8s-name }} cluster and its supporting network, using the following test specifications:
 
   * Name: `k8s-ha-one-zone`.
   * Folder ID: `{{ tf-folder-id }}`.
@@ -882,7 +884,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
   }
 
   resource "yandex_kms_symmetric_key" "kms-key" {
-    # A {{ kms-full-name }} key for encrypting critical information, including passwords, OAuth tokens, and SSH keys.
+    # A {{ kms-full-name }} key for encrypting critical information, such as passwords, OAuth tokens, and SSH keys.
     name              = "kms-key"
     default_algorithm = "AES_128"
     rotation_period   = "8760h" # 1 year.
@@ -890,7 +892,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
 
   resource "yandex_vpc_security_group" "ha-k8s-sg" {
     name        = "ha-k8s-sg"
-    description = "Group rules ensure the basic performance of the {{ managed-k8s-name }} cluster. Apply them to the cluster and node groups."
+    description = "The group rules ensure the basic performance of the {{ managed-k8s-name }} cluster. Apply them to the cluster and node groups."
     network_id  = yandex_vpc_network.my-ha-net.id
     ingress {
       protocol          = "TCP"
@@ -901,7 +903,7 @@ To create a cluster with no internet access, see [{#T}](../../tutorials/k8s-clus
     }
     ingress {
       protocol          = "ANY"
-      description       = "The rule allows master-to-node and node-to-node communication inside a security group."
+      description       = "The rule allows master-to-node and node-to-node interactions inside a security group."
       predefined_target = "self_security_group"
       from_port         = 0
       to_port           = 65535

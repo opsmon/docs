@@ -19,8 +19,9 @@ For more information about assigning roles, see [this {{ iam-full-name }} guide]
 
 - Management console {#console}
 
-  1. On the [resource folder]({{ link-console-main }}) page, select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-trino }}**.
-  1. Click the cluster name.
+  1. Go to the [resource folder]({{ link-console-main }}) page.
+  1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-trino }}**.
+  1. Click the name of your cluster.
   1. In the left-hand panel, select ![image](../../_assets/console-icons/folder-tree.svg) **{{ ui-key.yacloud.trino.title_catalogs }}**.
   1. Click **{{ ui-key.yacloud.trino.catalogs.create_action }}**.
   1. In the **{{ ui-key.yacloud.trino.catalogs.field_catalog-name }}** field, enter a name for the {{ TR }} catalog.
@@ -112,7 +113,7 @@ For more information about assigning roles, see [this {{ iam-full-name }} guide]
 
         You can get the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
-    1. View the [server response](../api-ref/Catalog/create.md#yandex.cloud.operation.Operation) to make sure your request was successful.
+    1. Check the [server response](../api-ref/Catalog/create.md#yandex.cloud.operation.Operation) to make sure your request was successful.
 
 - gRPC API {#grpc-api}
 
@@ -122,7 +123,7 @@ For more information about assigning roles, see [this {{ iam-full-name }} guide]
 
     1. {% include [grpc-api-setup-repo](../../_includes/mdb/grpc-api-setup-repo.md) %}
 
-    1. Use the [CatalogService.Create](../api-ref/grpc/Catalog/create.md) call and run the following request, e.g., via {{ api-examples.grpc.tool }}:
+    1. Call the [CatalogService.Create](../api-ref/grpc/Catalog/create.md) method, e.g., via the following {{ api-examples.grpc.tool }} request:
 
         ```bash
         grpcurl \
@@ -150,7 +151,7 @@ For more information about assigning roles, see [this {{ iam-full-name }} guide]
 
         You can get the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
-    1. View the [server response](../api-ref/grpc/Catalog/create.md#yandex.cloud.operation.Operation) to make sure your request was successful.
+    1. Check the [server response](../api-ref/grpc/Catalog/create.md#yandex.cloud.operation.Operation) to make sure your request was successful.
 
 {% endlist %}
 
@@ -177,7 +178,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
     * **Connection ID**: Connection ID in {{ connection-manager-name }} for connection to the {{ CH }} cluster.
 
         To find out the connection ID:
-        1. Navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
+        1. Go to the [resource folder]({{ link-console-main }}) page.
+        1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
         1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
     * **Database**: DB name in the {{ CH }} cluster.
@@ -202,11 +204,12 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--connection-manager-connection-id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ CH }} cluster.
 
       To find out the connection ID:
-        1. Navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
+        1. Go to the [resource folder]({{ link-console-main }}) page.
+        1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
         1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.   
 
     * `--connection-manager-database`: DB name in the {{ CH }} cluster.
@@ -245,7 +248,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connection_id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ CH }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `database`: DB name in the {{ CH }} cluster.
@@ -295,7 +299,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connectionId`: Connection ID in {{ connection-manager-name }} for connecting to the {{ CH }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `database`: DB name in the {{ CH }} cluster.
@@ -351,7 +356,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connection_id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ CH }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-clickhouse }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `database`: DB name in the {{ CH }} cluster.
@@ -365,7 +371,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
 {% endlist %}
 
-#### On-premise connection {#ch-on-premise}
+#### Manual setup {#ch-on-premise}
 
 {% list tabs group=instructions %}
 
@@ -391,7 +397,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--on-premise-connection-url`: URL for connecting to the {{ CH }} DB, in the following format: `jdbc:clickhouse://<host_address>:<port>/<DB_name>`.
     * `--on-premise-user-name`: Username for connection to the {{ CH }} DB.
     * `--on-premise-password`: User password for connection to the {{ CH }} DB.
@@ -1106,7 +1112,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 - Management console {#console}
 
     * **Connection type**: On-premise.
-    * **URL**: URL for connecting to the Oracle DB, in `jdbc:oracle:thin:@<host_address>:<port>:<SID>`. `SID` format, Oracle system ID.
+    * **URL**: URL for connecting to the Oracle DB, in `jdbc:oracle:thin:@<host_address>:<port>:<SID>` format, where `SID` is the Oracle system ID.
     * **Username**: Username for connecting to the Oracle DB.
     * **Password**: User password for connection to the Oracle DB.
     * **Additional settings**: Provide in `key: value` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/oracle.html).
@@ -1127,7 +1133,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
     Where:
 
     * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
-    * `--on-premise-connection-url`: URL for connecting to the Oracle DB, in `jdbc:oracle:thin:@<host_address>:<port>:<SID>`. `SID` format, Oracle system ID.
+    * `--on-premise-connection-url`: URL for connecting to the Oracle DB, in `jdbc:oracle:thin:@<host_address>:<port>:<SID>`, where `SID` is the Oracle system ID.
     * `--on-premise-user-name`: Username for connection to the Oracle DB.
     * `--on-premise-password`: User password for connection to the Oracle DB.
     * `--additional-properties`: Additional settings in `key=value` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/oracle.html).
@@ -1267,7 +1273,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
     * **Connection ID**: Connection ID in {{ connection-manager-name }} for connection to the {{ PG }} cluster.
 
         To find out the connection ID:
-        1. Navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
+        1. Go to the [resource folder]({{ link-console-main }}) page.
+        1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
         1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
     * **Database**: DB name in the {{ PG }} cluster.
@@ -1288,11 +1295,12 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--connection-manager-connection-id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ PG }} cluster.
 
         To find out the connection ID:
-        1. Navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
+        1. Go to the [resource folder]({{ link-console-main }}) page.
+        1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
         1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
     * `--connection-manager-database`: DB name in the {{ PG }} cluster.
@@ -1331,7 +1339,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connection_id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ PG }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `database`: DB name in the {{ PG }} cluster.
@@ -1381,7 +1390,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connectionId`: Connection ID in {{ connection-manager-name }} for connecting to the {{ PG }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `database`: DB name in the {{ PG }} cluster.
@@ -1437,7 +1447,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connection_id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ PG }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `database`: DB name in the {{ PG }} cluster.
@@ -1451,7 +1462,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
 {% endlist %}
 
-#### On-premise connection {#pg-on-premise}
+#### Manual setup {#pg-on-premise}
 
 {% list tabs group=instructions %}
 
@@ -1477,7 +1488,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--on-premise-connection-url`: URL for connecting to the {{ PG }} DB, in `jdbc:postgresql://<host_address>:<port>/<DB_name>` format.
     * `--on-premise-user-name`: Username for connection to the {{ PG }} DB.
     * `--on-premise-password`: User password for connection to the {{ PG }} DB.
@@ -1618,7 +1629,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
     * **Connection ID**: Connection ID in {{ connection-manager-name }} for connection to the {{ MY }} cluster.
 
         To find out the connection ID:
-        1. Navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-mysql }}**.
+        1. Go to the [resource folder]({{ link-console-main }}) page.
+        1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-mysql }}**.
         1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
     * **Connection properties**: {{ MY }} connection settings in `key: value` format.
@@ -1641,11 +1653,12 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--connection-manager-connection-id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ MY }} cluster.
 
         To find out the connection ID:
-        1. Navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
+        1. Go to the [resource folder]({{ link-console-main }}) page.
+        1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-postgresql }}**.
         1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
     * `--connection-manager-connection-properties`: List of {{ MY }} connection settings in `key=value` format.
@@ -1654,6 +1667,43 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     * `--additional-properties`: Additional settings in `key=value` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/mysql.html).
 
+- {{ TF }} {#tf}
+
+    Configuration example:
+
+    ```hcl
+    resource "yandex_trino_catalog" "<{{ TR }}_catalog_name>" {
+      ...
+      mysql = {
+        connection_manager = {
+          connection_id = "<connection_ID>"
+          connection_properties = {
+            <{{ MY }}_connection_settings_list>
+          }
+        }
+        additional_properties = {
+          <list_of_additional_settings>
+        }
+      }
+    }
+    ```
+
+    Where:
+
+    * `connection_manager`: {{ connection-manager-name }} settings:
+
+        * `connection_id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ MY }} cluster.
+
+            To find out the connection ID:
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-mysql }}**.
+            1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
+
+        * `connection_properties`: List of {{ MY }} connection settings in `"key" = "value"` format.
+
+           {% include [client-parameters-mysql](../../_includes/managed-trino/client-parameters-mysql.md) %}
+
+    * `additional_properties`: List of additional settings in `"key" = "value"` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/mysql.html).
 
 - REST API {#api}
 
@@ -1694,7 +1744,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connectionId`: Connection ID in {{ connection-manager-name }} for connecting to the {{ MY }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-mysql }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-mysql }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `connectionProperties`: List of {{ MY }} connection settings in `"key": "value"` format.
@@ -1748,7 +1799,8 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
         * `connection_id`: Connection ID in {{ connection-manager-name }} for connecting to the {{ MY }} cluster.
 
             To find out the connection ID:
-            1. In the management console, navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-mysql }}**.
+            1. In the management console, go to the [resource folder]({{ link-console-main }}) page.
+            1. [Go](../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-mysql }}**.
             1. Click the cluster name and go to the **{{ ui-key.yacloud.connection-manager.label_connections }}** tab.
 
         * `connection_properties`: List of {{ MY }} connection settings in `"key": "value"` format.
@@ -1761,7 +1813,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
 {% endlist %}
 
-#### On-premise connection {#mysql-on-premise}
+#### Manual setup {#mysql-on-premise}
 
 {% list tabs group=instructions %}
 
@@ -1787,12 +1839,41 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--on-premise-connection-url`: URL for connecting to the {{ MY }} server, in `jdbc:mysql://<host_address>:<port>/` format. You do not need to specify a database name, {{ TR }} will automatically detect all available databases.
     * `--on-premise-user-name`: Username for connection to the {{ MY }} server.
     * `--on-premise-password`: User password for connection to the {{ MY }} server.
     * `--additional-properties`: Additional settings in `key=value` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/mysql.html).
 
+- {{ TF }} {#tf}
+
+    Configuration example:
+
+    ```hcl
+    resource "yandex_trino_catalog" "<{{ TR }}_catalog_name>" {
+      ...
+      mysql = {
+        on_premise = {
+          connection_url = "<URL_for_connection>"
+          user_name      = "<username>"
+          password       = "<user_password>"
+        }
+        additional_properties = {
+          <list_of_additional_settings>
+        }
+      }
+    }
+    ```
+
+    Where:
+
+    * `on_premise`: Settings for connecting to the custom installation:
+
+        * `connection_url`: URL for connecting to the {{ MY }} server, in `jdbc:mysql://<host_address>:<port>/` format. You do not need to specify a database name, {{ TR }} will automatically detect all available databases.
+        * `user_name`: Username for connection to the {{ MY }} server.
+        * `password`: User password for connection to the {{ MY }} server.
+
+    * `additional_properties`: List of additional settings in `"key" = "value"` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/mysql.html).
 
 - REST API {#api}
 
@@ -1892,7 +1973,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
 - Management console {#console}
 
-    * **Connection type**: On-premise.
+    * **Connection type**: Manual setup.
     * **URL**: URL for connecting to the Microsoft SQL Server DB, in `jdbc:sqlserver://<host_address>:<port>;databaseName=<DB_name>` format.
     * **Username**: Username for connecting to the Microsoft SQL Server DB.
     * **Password**: User password for connection to the Microsoft SQL Server DB.
@@ -1913,7 +1994,7 @@ Connectors marked with {{ preview-stage }} are at the preview stage. Their stabi
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--on-premise-connection-url`: URL for connecting to the Microsoft SQL Server DB, in `jdbc:sqlserver://<host_address>:<port>;databaseName=<DB_name>` format.
     * `--on-premise-user-name`: Username for connecting to the Microsoft SQL Server DB.
     * `--on-premise-password`: User password for connection to the Microsoft SQL Server DB.
@@ -2063,7 +2144,7 @@ The TPC-DS connector has no required settings. Optionally, you can configure adv
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--additional-properties`: Additional settings in `key=value` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/tpcds.html).  
 
 - {{ TF }} {#tf}
@@ -2167,7 +2248,7 @@ The TPC-H connector has no required settings. Optionally, you can configure adva
 
     Where:
 
-    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID from the [list of clusters](cluster-list.md#list-clusters).
+    * `--cluster-id`: ID of the cluster you are creating the {{ TR }} catalog in. You can get the cluster ID with the [list of clusters](cluster-list.md#list-clusters).
     * `--additional-properties`: Additional settings in `key=value` format. For a list of available settings, see the [official documentation]({{ tr.docs }}/connector/tpch.html).      
 
 - {{ TF }} {#tf}

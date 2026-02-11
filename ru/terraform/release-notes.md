@@ -5,6 +5,53 @@ sourcePath: en/terraform/tf-ref/yandex-cloud/release-notes.md
 
 
 
+## 0.185.0 (February 9, 2026)
+##### FEATURES:
+* general: update docs format
+* general: add id field for iam_member and iam_binding resources
+##### BUG FIXES:
+* general: add timeouts update for resources with unimplemented update
+##### WARNING:
+* mdb: remove sqlserver resources and docs
+
+## 0.184.0 (February 5, 2026)
+##### ENHANCEMENTS:
+* mdb_clickhouse: add support for batch shard operations in cluster management
+* mdb_clickhouse: add `query_metric_log_enabled`, `query_metric_log_retention_size`, and `query_metric_log_retention_time` options
+
+## 0.183.0 (February 2, 2026)
+##### FEATURES:
+* connection_manager: add lockbox_secret_spec block into yandex_connectionmanager_connection
+##### BUG FIXES:
+* serverless: fix timer trigger creation
+* opensearch: fix operation status while errors
+* postgresql: fix yandex_mdb_postgresql_user changes on pgaudit management
+
+## 0.182.0 (January 29, 2026)
+##### FEATURES:
+* datatransfer: add `yandex_datatransfer_transfer` resource and data-source
+##### BUG FIXES:
+* mdb_clickhouse: fix import state for user by setting `generate_password` to false
+
+## 0.181.0 (January 26, 2026)
+##### FEATURES:
+* mdb_kafka: add `message_timestamp_type` support for Kafka topic configuration
+* mdb_clickhouse: add `mdb_clickhouse_cluster_v2` data source
+##### BUG FIXES:
+* clickhouse: fix deprecated version in `yandex_mdb_clickhouse_cluster_v2`
+##### ENHANCEMENTS:
+* general: add yc tools initialization service call
+* mdb_clickhouse: fix table reference format in `select_from_information_schema_requires_grant` and `select_from_system_db_requires_grant` descriptions
+
+## 0.180.0 (January 22, 2026)
+##### FEATURES:
+* trino: add `private_access` field to trino_cluster resource
+* CloudOrganization: added new userpool domain resource
+* postgresql: user_password_encryption management via terraform
+##### ENHANCEMENTS:
+* mdb_clickhouse: fix description for `log_processors_profiles` attribute to reference correct system table
+* mdb_clickhouse: ensure consistent ordering of shard names in cluster configuration
+
 ## 0.179.0 (January 19, 2026)
 ##### FEATURES:
 * mdb: add `mdb_clickhouse_cluster_v2` resource

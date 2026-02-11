@@ -1,10 +1,10 @@
 ---
-title: Pricing policy for {{ ydb-full-name }} serverless mode
-description: This article explains the pricing policy for {{ ydb-name }} serverless mode.
+title: Pricing policy for Serverless mode in {{ ydb-full-name }}
+description: This article covers the {{ ydb-name }} pricing policy for Serverless mode.
 editable: false
 ---
 
-# Pricing policy for {{ ydb-name }} serverless mode
+# Pricing policy for Serverless mode in {{ ydb-name }}
 
 
 
@@ -13,7 +13,7 @@ editable: false
 
 
 
-To calculate the cost of using {{ ydb-name }}, use [our calculator](https://yandex.cloud/en/prices?state=02fcbc53c755#calculator) on the {{ yandex-cloud }} website or check the pricing data below.
+For cost estimation, use [this calculator](https://yandex.cloud/en/prices?state=02fcbc53c755#calculator) on our website or check out the pricing below.
 
 
 {% endnote %}
@@ -42,7 +42,7 @@ The following resources are paid additionally:
 
 ### Data operations and request units {#rules-ru}
 
-The serverless mode of Yandex {{ ydb-name }} supports multiple ways to work with data:
+In *Serverless* mode, Yandex {{ ydb-name }} can work with data in several ways:
 * YQL: SQL dialect to work with relational tables supported by the [SDK]({{ ydb.docs }}/reference/ydb-sdk/), [CLI]({{ ydb.docs }}/reference/ydb-cli/), and the {{ ydb-short-name }} management console.
 * Document API: Amazon’s DynamoDB-compatible HTTP API. You can use this API to perform operations on document tables.
 
@@ -56,14 +56,14 @@ Below, you can find the rules for calculating the cost of requests to {{ ydb-sho
 * [Special APIs](ru-special.md).
 * [Topic operations](ru-topics.md).
 
-#### Pricing for Request Unit consumption {#prices-ru}
+#### Pricing for request unit consumption {#prices-ru}
 
 * **Actual consumption (on-demand)**. The cost of using {{ ydb-short-name }} for a certain period is the number of spent RUs multiplied by the price per RU minus the monthly [free package](../../billing/concepts/serverless-free-tier.md#ydb). If there were no requests to the database or if the amount of RUs spent in the current month is less than the free package, there is no charge for the actual RU consumption.
 * **Provisioned capacity**. If your load is predictable and has a fixed component, you can reduce the cost of using {{ ydb-short-name }} by paying for some (or all) RUs you spent on an hourly basis. To do this, set a non-zero value of the _Provisioned capacity, RU/s_ property. After that, you will be charged according to a special pricing plan, the rate for which is set to RU/s per hour, with billing per second. The RUs consumed within the specified capacity are not added to the RUs spent at the on-demand rate.
 
 ### Amount of stored data {#rules-storage}
 
-In serverless mode, the data storage capacity is allocated automatically. The amount of stored data is calculated as the total amount of user and service data stored in the database. For example, creating a global index increases the total storage size by the index size.
+In *Serverless* mode, data storage capacities are allocated automatically. The amount of stored data is calculated as the total amount of user and service data stored in the database. For example, creating a global index increases the total storage size by the index size.
 
 For topics with on-demand pricing, you also pay for the actually used disk space. Its usage starts once each message is published in a topic and it is released once the retention period set for the topic expires.
 
@@ -131,7 +131,7 @@ Actual (on-demand) consumption of RUs per month will be:
 
 Where:
 
-* 0.5: Cost of request for 1 KB of data.
+* 0.5: Cost of request per KB of data.
 * 1,024 × 1,024: Amount of recovered data, in KB.
 
 The number of RUs spent (524,288) is [less than 1,000,000](#prices), so recovery from a backup will be free of charge.
@@ -146,7 +146,6 @@ Actual (on-demand) consumption of RUs per month will be:
 
 
 ## Prices for the Russia region {#prices}
-
 
 {% include [pricing-diff-regions](../../_includes/pricing-diff-regions.md) %}
 

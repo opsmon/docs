@@ -8,18 +8,8 @@ sourcePath: en/monitoring_includes/metrics-ref/cdn-ref.md
 # {{ cdn-full-name }} metrics
 
 
-This section describes [{{ cdn-name }}](../../cdn/) metrics delivered to {{ monitoring-name }}.
-
-The service metrics depend on the provider you select:
-* [{{ cdn-full-name }}](#yc)
-* [EdgeCDN](#edge)
-
-## {{ cdn-full-name }} provider {#yc}
-
-{% include [cdn-yc.md](../../_includes/monitoring/metrics-ref/cdn-yc.md) %}
-
-## EdgeCDN provider {#edge}
+This section describes the [{{ cdn-name }}](../../cdn/) metrics delivered to {{ monitoring-name }}.
 
 {% include [metrics-note](../../_includes/cdn/metrics-note.md) %}
 
-{% include [cdn.md](../../_includes/monitoring/metrics-ref/cdn.md) %}
+{% include [cdn-yc.md](../../_includes/monitoring/metrics-ref/cdn-yc.md) %}

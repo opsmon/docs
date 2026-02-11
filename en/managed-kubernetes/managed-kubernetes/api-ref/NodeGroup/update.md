@@ -117,6 +117,11 @@ apiPlayground:
           type: object
           additionalProperties:
             type: string
+        workloadIdentityFederation:
+          description: |-
+            **[NodeGroupWorkloadIdentityFederation](#yandex.cloud.k8s.v1.NodeGroupWorkloadIdentityFederation)**
+            Workload Identity Federation parameters of the node group.
+          $ref: '#/definitions/NodeGroupWorkloadIdentityFederation'
       additionalProperties: false
     definitions:
       ResourcesSpec:
@@ -442,13 +447,11 @@ apiPlayground:
       FixedScale:
         type: object
         properties:
-          size:
+          resourcePresetId:
             description: |-
-              **string** (int64)
-              Number of nodes in the node group.
-              Acceptable values are 0 to 100, inclusive.
+              **string**
+              ID of computing resources preset to be used by master.
             type: string
-            format: int64
       AutoScale:
         type: object
         properties:
@@ -464,7 +467,7 @@ apiPlayground:
         properties:
           fixedScale:
             description: |-
-              **[FixedScale](#yandex.cloud.k8s.v1.ScalePolicy.FixedScale)**
+              **[FixedScale](/docs/managed-kubernetes/managed-kubernetes/api-ref/Cluster/get#yandex.cloud.k8s.v1.MasterScalePolicy.FixedScale)**
               Fixed scale policy of the node group.
               Includes only one of the fields `fixedScale`, `autoScale`.
             $ref: '#/definitions/FixedScale'
@@ -727,6 +730,14 @@ apiPlayground:
               - NO_SCHEDULE
               - PREFER_NO_SCHEDULE
               - NO_EXECUTE
+      NodeGroupWorkloadIdentityFederation:
+        type: object
+        properties:
+          enabled:
+            description: |-
+              **boolean**
+              Identifies whether Workload Identity Federation is enabled.
+            type: boolean
 sourcePath: en/_api-ref/k8s/v1/managed-kubernetes/api-ref/NodeGroup/update.md
 ---
 
@@ -916,7 +927,10 @@ To get the node group ID use a [NodeGroupService.List](/docs/managed-kubernetes/
       "effect": "string"
     }
   ],
-  "nodeLabels": "object"
+  "nodeLabels": "object",
+  "workloadIdentityFederation": {
+    "enabled": "boolean"
+  }
 }
 ```
 
@@ -937,7 +951,7 @@ The rest of the fields will be reset to the default. ||
 Name of the node group.
 The name must be unique within the folder.
 
-Value must match the regular expression ` \|[a-z]([-a-z0-9]{0,61}[a-z0-9])? `. ||
+Value must match the regular expression ``` |[a-z]([-a-z0-9]{0,61}[a-z0-9])? ```. ||
 || description | **string**
 
 Description of the node group.
@@ -981,6 +995,9 @@ Taints that are applied to the nodes of the node group at creation time. ||
 || nodeLabels | **object** (map<**string**, **string**>)
 
 Labels that are assigned to the nodes of the node group at creation time. ||
+|| workloadIdentityFederation | **[NodeGroupWorkloadIdentityFederation](#yandex.cloud.k8s.v1.NodeGroupWorkloadIdentityFederation)**
+
+Workload Identity Federation parameters of the node group. ||
 |#
 
 ## NodeTemplate {#yandex.cloud.k8s.v1.NodeTemplate}
@@ -1084,7 +1101,7 @@ The minimum value is 0. ||
 
 ID of the disk type.
 
-Value must match the regular expression ` \|network-ssd\|network-hdd\|network-ssd-nonreplicated\|network-ssd-io-m3 `. ||
+Value must match the regular expression ``` |network-ssd|network-hdd|network-ssd-nonreplicated|network-ssd-io-m3 ```. ||
 || diskSize | **string** (int64)
 
 Size of the disk, specified in bytes.
@@ -1470,6 +1487,17 @@ onto the node entirely. Enforced by the scheduler.
 - `NO_EXECUTE`: Evict any already-running pods that do not tolerate the taint. ||
 |#
 
+## NodeGroupWorkloadIdentityFederation {#yandex.cloud.k8s.v1.NodeGroupWorkloadIdentityFederation}
+
+NodeGroupWorkloadIdentityFederation contains configuration for Workload Identity Federation.
+
+#|
+||Field | Description ||
+|| enabled | **boolean**
+
+Identifies whether Workload Identity Federation is enabled. ||
+|#
+
 ## Response {#yandex.cloud.operation.Operation}
 
 **HTTP Code: 200 - OK**
@@ -1661,7 +1689,10 @@ onto the node entirely. Enforced by the scheduler.
         "effect": "string"
       }
     ],
-    "nodeLabels": "object"
+    "nodeLabels": "object",
+    "workloadIdentityFederation": {
+      "enabled": "boolean"
+    }
   }
   // end of the list of possible fields
 }
@@ -1837,6 +1868,9 @@ Taints that are applied to the nodes of the node group at creation time. ||
 || nodeLabels | **object** (map<**string**, **string**>)
 
 Labels that are assigned to the nodes of the node group at creation time. ||
+|| workloadIdentityFederation | **[NodeGroupWorkloadIdentityFederation](#yandex.cloud.k8s.v1.NodeGroupWorkloadIdentityFederation2)**
+
+Workload Identity Federation parameters of the node group. ||
 |#
 
 ## NodeTemplate {#yandex.cloud.k8s.v1.NodeTemplate2}
@@ -1940,7 +1974,7 @@ The minimum value is 0. ||
 
 ID of the disk type.
 
-Value must match the regular expression ` \|network-ssd\|network-hdd\|network-ssd-nonreplicated\|network-ssd-io-m3 `. ||
+Value must match the regular expression ``` |network-ssd|network-hdd|network-ssd-nonreplicated|network-ssd-io-m3 ```. ||
 || diskSize | **string** (int64)
 
 Size of the disk, specified in bytes.
@@ -2330,4 +2364,15 @@ to start, and allow all already-running pods to continue running.
 new pods onto the node, rather than prohibiting new pods from scheduling
 onto the node entirely. Enforced by the scheduler.
 - `NO_EXECUTE`: Evict any already-running pods that do not tolerate the taint. ||
+|#
+
+## NodeGroupWorkloadIdentityFederation {#yandex.cloud.k8s.v1.NodeGroupWorkloadIdentityFederation2}
+
+NodeGroupWorkloadIdentityFederation contains configuration for Workload Identity Federation.
+
+#|
+||Field | Description ||
+|| enabled | **boolean**
+
+Identifies whether Workload Identity Federation is enabled. ||
 |#

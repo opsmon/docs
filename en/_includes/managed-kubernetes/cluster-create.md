@@ -3,7 +3,7 @@
 1. Click **{{ ui-key.yacloud.k8s.clusters.button_create }}**.
 1. Enter a name and description for your {{ managed-k8s-name }} cluster. The {{ managed-k8s-name }} cluster name must be unique within {{ yandex-cloud }}.
 1. Specify a **{{ ui-key.yacloud.k8s.clusters.create.field_service-account }}** to use to create your resources.
-1. Specify a **{{ ui-key.yacloud.k8s.clusters.create.field_node-service-account }}** the [{{ managed-k8s-name }} nodes](../../managed-kubernetes/concepts/index.md#node-group) will use to access the [Docker image registry](../../container-registry/concepts/registry.md) in [{{ container-registry-full-name }}](../../container-registry/).
+1. Specify the **{{ ui-key.yacloud.k8s.clusters.create.field_node-service-account }}** the [{{ managed-k8s-name }} nodes](../../managed-kubernetes/concepts/index.md#node-group) will use to access the [Docker image](../../container-registry/concepts/docker-image.md) registry in {{ container-registry-full-name }}.
 1. Optionally, specify the **{{ ui-key.yacloud.k8s.clusters.create.field_kms-key }}** for [secret encryption](../../managed-kubernetes/concepts/encryption.md).
 
    {% include [write-once-settings](write-once-setting.md) %}
@@ -21,7 +21,7 @@
 
      {% include [master-default-config](master-default-config.md) %}
 
-   * In the **{{ ui-key.yacloud.k8s.clusters.create.field_master-version }}** field, select the {{ k8s }} version to install on the [{{ managed-k8s-name }}](../../managed-kubernetes/concepts/index.md#master) master.
+   * In the **{{ ui-key.yacloud.k8s.clusters.create.field_master-version }}** field, select the {{ k8s }} version to install on the [{{ managed-k8s-name }} master](../../managed-kubernetes/concepts/index.md#master).
    * In the **{{ ui-key.yacloud.k8s.clusters.create.field_address-type }}** field, select an [IP address](../../vpc/concepts/address.md) assignment method:
      * `{{ ui-key.yacloud.k8s.clusters.create.switch_auto }}`: Assign a random IP address from the {{ yandex-cloud }} IP address pool.
      * `{{ ui-key.yacloud.k8s.clusters.create.switch_none }}`: Do not assign a public IP address.

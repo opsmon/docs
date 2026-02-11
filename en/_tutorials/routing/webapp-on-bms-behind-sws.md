@@ -126,7 +126,7 @@ Configure the infrastructure on the {{ vpc-name }} side. In this step, you will 
 
 - Management console {#console}
 
-  1. In the [management console]({{ link-console-main }}), select the folder to create the infrastructure in.
+  1. In the [management console]({{ link-console-main }}), select the folder where you are deploying your infrastructure.
   1. In the list of services, select **{{ ui-key.yacloud.iam.folder.dashboard.label_compute }}**.
   1. In the left-hand panel, select ![image](../../_assets/console-icons/server.svg) **{{ ui-key.yacloud.compute.instances_jsoza }}** and click **{{ ui-key.yacloud.compute.instances.button_create }}**.
   1. Under **{{ ui-key.yacloud.compute.instances.create.section_image }}**, select the [Ubuntu 24.04](/marketplace/products/yc/ubuntu-2404-lts-oslogin) image.
@@ -214,9 +214,9 @@ Create a {{ interconnect-name }} [private connection](../../baremetal/concepts/n
 
   1. In the [management console]({{ link-console-main }}), select the folder where you are deploying your infrastructure.
   1. {% include [server-lease-step2](../../_includes/baremetal/instruction-steps/server-lease-step2.md) %}
-  1. Click **{{ ui-key.yacloud.baremetal.label_create-server }}** and, in the window that opens, select `{{ ui-key.yacloud.baremetal.servers.ServerConfigPage.ready-configs_ibA3Y }}` and a suitable {{ baremetal-name }} server [configuration](../../baremetal/concepts/server-configurations.md) in the `{{ region-id }}-m4` server pool.
+  1. Click **{{ ui-key.yacloud.baremetal.label_create-server }}** and, in the window that opens, select `{{ ui-key.yacloud_components.baremetal.PresetConfigurations }}` and a suitable {{ baremetal-name }} server [configuration](../../baremetal/concepts/server-configurations.md) in the `{{ region-id }}-m4` server pool.
 
-      Do it by selecting the `{{ region-id }}-m4` server pool in the filter on the right side of the window, under **{{ ui-key.yacloud.baremetal.servers.Filters.poolFilter_tVgg5 }}**.
+      Do it by selecting the `{{ region-id }}-m4` server pool in the filter on the right side of the window, under **{{ ui-key.yacloud_components.baremetal.poolFilter }}**.
 
       To select the suitable server configuration, click the section with its name in the central part of the screen.
   1. In the server configuration window that opens:
@@ -518,7 +518,7 @@ After you create the {{ vpc-name }} and {{ baremetal-name }} infrastructure comp
   1. In the **{{ ui-key.yacloud.common.name }}** field, enter a name for the [HTTP router](../../application-load-balancer/concepts/http-router.md): `http-80`.
   1. Under **{{ ui-key.yacloud.alb.label_virtual-hosts }}**, click **{{ ui-key.yacloud.alb.button_virtual-host-add }}** and do the following in the **{{ ui-key.yacloud.alb.label_new-virtual-host }}** form that opens:
 
-      1. In the **{{ ui-key.yacloud.common.name }}** field, enter `http-vh` for the [virtual host](../../application-load-balancer/concepts/http-router.md#virtual-host)'s name and click **{{ ui-key.yacloud.alb.button_add-route }}**.
+      1. In the **{{ ui-key.yacloud.common.name }}** field, enter `http-vh` for the [virtual host](../../application-load-balancer/concepts/http-router.md#virtual-host)‘s name and click **{{ ui-key.yacloud.alb.button_add-route }}**.
       1. In the **{{ ui-key.yacloud.alb.label_new-route }}** form that opens, enter `main-route-80` as the [route](../../application-load-balancer/concepts/http-router.md#routes)'s name in the **{{ ui-key.yacloud.common.name }}** field.
       1. In the **{{ ui-key.yacloud.alb.label_http-methods }}** field, select `GET`.
       1. In the **{{ ui-key.yacloud.alb.label_backend-group }}** field, select the `bms-backend-group` backend group created in the previous step.

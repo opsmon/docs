@@ -1,11 +1,9 @@
 ---
 title: '{{ metadata-hub-full-name }} release notes'
-description: This section contains {{ metadata-hub-name }} release notes.
+description: This section contains the {{ metadata-hub-name }} release notes.
 ---
 
 <!-- Changelog begin -->
-
-
 
 
 
@@ -14,7 +12,25 @@ description: This section contains {{ metadata-hub-name }} release notes.
 
 # {{ metadata-hub-full-name }} release notes
 
+
+
 ## 2025 {#2025}
+
+### December {#dec25}
+
+
+#### New features {#new-features-dec25}
+
+[{{ data-catalog-name }}](../concepts/data-catalog.md) users can now enjoy these extra metadata analysis and management features:
+
+* Metadata markup management space with bulk editing and statistics.
+
+* Data storage for viewing datasets uploaded from multiple sources.
+
+
+#### Fixed issues {#problems-solved-dec5}
+
+Fixed an error when using connections to the custom {{ SD }} installation.
 
 
 ### November {#nov25}
@@ -50,7 +66,7 @@ Improved metadata profiling and contextual search.
 
 #### New features {#new-features-sep25}
 
-* [{{ connection-manager-name }}](../concepts/connection-manager.md) has entered the [General Availability stage](../../overview/concepts/launch-stages.md); added support for YC CLI and Terraform.
+* [{{ connection-manager-name }}](../concepts/connection-manager.md) has entered the [General Availability stage](../../overview/concepts/launch-stages.md); added support for YC CLI and {{ TF }}.
 
 
 * [{{ metastore-full-name }}](../concepts/metastore.md) has entered the [General Availability stage](../../overview/concepts/launch-stages.md); the use of clusters is now [charged](../pricing.md).

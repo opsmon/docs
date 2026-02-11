@@ -24,6 +24,8 @@
 
 - Вручную {#manual}
 
+    {% include [public-access](../../../_includes/mdb/note-public-access.md) %}
+
     1. [Создайте кластер-источник {{ mmy-name }}](../../../managed-mysql/operations/cluster-create.md#create-cluster) в любой [зоне доступности](../../../overview/concepts/geo-scope.md), с хостами любой подходящей конфигурации в публичном доступе, и следующими настройками:
 
         * **{{ ui-key.yacloud.mdb.forms.database_field_name }}** — `mmy_db`.
@@ -42,7 +44,7 @@
 
     1. Убедитесь, что группы безопасности кластеров настроены правильно и допускают подключение к ним:
 
-        * [{{ mmy-name }}](../../../managed-mysql/operations/connect.md#configuring-security-groups).
+        * [{{ mmy-name }}](../../../managed-mysql/operations/connect/index.md#configuring-security-groups).
         * [{{ mpg-name }}](../../../managed-postgresql/operations/connect.md#configuring-security-groups).
 
 - {{ TF }} {#tf}
@@ -86,7 +88,7 @@
 
 ## Подготовьте тестовые данные {#prepare-data}
 
-1. [Подключитесь к базе данных в кластере-источнике {{ mmy-name }}](../../../managed-mysql/operations/connect.md).
+1. [Подключитесь к базе данных в кластере-источнике {{ mmy-name }}](../../../managed-mysql/operations/connect/index.md).
 
 1. Наполните базу тестовыми данными. В качестве примера используется простая таблица, содержащая информацию, поступающую от некоторых датчиков автомобиля.
 
@@ -175,7 +177,7 @@
 
 ### Проверьте работу репликации {#verify-replication}
 
-1. [Подключитесь к базе данных в кластере-источнике {{ mmy-name }}](../../../managed-mysql/operations/connect.md).
+1. [Подключитесь к базе данных в кластере-источнике {{ mmy-name }}](../../../managed-mysql/operations/connect/index.md).
 1. Добавьте данные в таблицу `measurements`:
 
     ```sql

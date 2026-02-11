@@ -2,7 +2,7 @@
 
     {% include [api-auth-token](../../api-auth-token.md) %}
 
-1. Use the [Cluster.AddHosts](../../../../managed-valkey/api-ref/Cluster/addHosts.md) method and make a request, e.g., via {{ api-examples.rest.tool }}:
+1. Call the [Cluster.AddHosts](../../../../managed-valkey/api-ref/Cluster/addHosts.md) method, e.g., via the following {{ api-examples.rest.tool }} request:
 
     
     ```bash
@@ -30,9 +30,9 @@
     * `zoneId`: [Availability zone](../../../../overview/concepts/geo-scope.md).
     * `subnetId`: [Subnet ID](../../../../vpc/concepts/network.md#subnet). Specify it if the selected availability zone has two or more subnets.
     * `shardName`: Shard name for the host. Only used if [cluster sharding](../../../../managed-valkey/concepts/sharding.md) is enabled.
-    * `replicaPriority`: Host priority for assignment as a master if the [primary master fails](../../../../managed-valkey/concepts/replication.md#master-failover).
-    * `assignPublicIp`: Internet access to the host via a public IP address, `true` or `false`. Public access is only a possibility if the cluster has TLS support enabled.
+    * `replicaPriority`: Host priority for master promotion during [failover](../../../../managed-valkey/concepts/replication.md#master-failover).
+    * `assignPublicIp`: Internet access to the host via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
 
-    You can get the cluster ID from the [folder’s cluster list](../../../../managed-valkey/operations/cluster-list.md#list-clusters).
+    You can get the cluster ID from the [list of clusters in your folder](../../../../managed-valkey/operations/cluster-list.md#list-clusters).
 
 1. Check the [server response](../../../../managed-valkey/api-ref/Cluster/addHosts.md#yandex.cloud.operation.Operation) to make sure your request was successful.

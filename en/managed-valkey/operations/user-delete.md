@@ -36,9 +36,9 @@ description: You can delete a {{ VLK }} user in {{ mrd-name }}.
 
   1. Open the current {{ TF }} configuration file describing your infrastructure.
   
-      For more information about creating this file, see [this guide](cluster-create.md).
+      To learn how to create this file, see [Creating a cluster](cluster-create.md).
   
-  1. Delete the `yandex_mdb_redis_user` resource with the user description.
+  1. Delete the `yandex_mdb_redis_user` resource with the target user’s description.
   
   1. Validate your configuration.
   
@@ -65,7 +65,7 @@ description: You can delete a {{ VLK }} user in {{ mrd-name }}.
 
       {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
-  1. Use the [User.Delete](../api-ref/User/delete.md) method and send the following request, e.g., via {{ api-examples.rest.tool }}:
+  1. Call the [User.Delete](../api-ref/User/delete.md) method, e.g., via the following {{ api-examples.rest.tool }} request:
 
       ```bash
       curl \
@@ -88,7 +88,7 @@ description: You can delete a {{ VLK }} user in {{ mrd-name }}.
 
   1. {% include [grpc-api-setup-repo](../../_includes/mdb/grpc-api-setup-repo.md) %}
 
-  1. Use the [UserService.Delete](../api-ref/grpc/User/delete.md) call to execute the following request, e.g., via {{ api-examples.grpc.tool }}:
+  1. Call the [UserService.Delete](../api-ref/grpc/User/delete.md) method, e.g., via the following {{ api-examples.grpc.tool }} request:
 
       ```bash
       grpcurl \

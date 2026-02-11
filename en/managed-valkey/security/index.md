@@ -1,6 +1,6 @@
 ---
 title: Access management in {{ mrd-full-name }}
-description: Access management in {{ VLK }}, a solution for creating and managing databases. This section describes the resources for which you can assign a role, the roles existing in this service, and the roles required for specific actions.
+description: Access management in the {{ VLK }} database creation and management service. This section describes the resources for which you can assign a role, the roles existing in this service, and the roles required for specific actions.
 ---
 
 # Access management in {{ mrd-name }}

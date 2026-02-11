@@ -42,6 +42,10 @@ keywords:
 
     1. В блоке **{{ ui-key.yacloud.mdb.forms.section_network }}** выберите [сеть](../../vpc/operations/network-create.md) и [группы безопасности](../../vpc/concepts/security-groups.md) для кластера.
 
+        
+        {% include [note-sg](../../_includes/managed-spqr/note-sg.md) %}
+
+
     1. Задайте конфигурацию вычислительных ресурсов:
 
         * Для стандартного шардирования задайте в блоке **{{ ui-key.yacloud.spqr.section_infra }}** конфигурацию инфраструктурных хостов.
@@ -68,7 +72,7 @@ keywords:
 
             После создания кластера {{ SPQR }} в него можно добавить дополнительные хосты, если для этого достаточно [ресурсов каталога](../concepts/limits.md).
 
-    1. В блоке **{{ ui-key.yacloud.mdb.forms.section_database }}** укажите параметры БД:
+    1. В блоке **{{ ui-key.yacloud.mdb.forms.section_database }}** укажите параметры БД, в которой можно выполнять запросы к таблицам на шардах:
 
         * Имя БД. Допустимая длина — от 1 до 63 символов. Может содержать строчные и прописные буквы латинского алфавита, цифры, нижние подчеркивания и дефисы.
 
@@ -76,7 +80,7 @@ keywords:
 
         * Пароль пользователя. Допустимая длина — от 8 до 128 символов.
 
-    1. При необходимости задайте дополнительные настройки кластера:
+    1. Задайте дополнительные настройки кластера:
 
         {% include [extra-settings](../../_includes/mdb/mspqr/console/extra-settings.md) %}
 
@@ -234,6 +238,8 @@ keywords:
 
      
      * `securityGroupIds` — идентификаторы [групп безопасности](../../vpc/concepts/security-groups.md).
+
+        {% include [note-sg](../../_includes/managed-spqr/note-sg.md) %}
 
 
      * `deletionProtection` — защита кластера от удаления: `true` или `false`.
@@ -507,6 +513,8 @@ keywords:
 
      
      * `security_group_ids` — идентификаторы [групп безопасности](../../vpc/concepts/security-groups.md).
+
+        {% include [note-sg](../../_includes/managed-spqr/note-sg.md) %}
 
 
      * `deletion_protection` — защита кластера от удаления: `true` или `false`.

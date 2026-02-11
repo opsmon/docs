@@ -1,9 +1,9 @@
 ---
-title: '{{ VLK }} cluster and host status monitoring'
+title: '{{ VLK }} cluster and host state monitoring'
 description: You can monitor the state of a {{ mrd-name }} cluster and its individual hosts using the monitoring tools in the management console. These tools display diagnostic information as charts.
 ---
 
-# {{ VLK }} cluster and host status monitoring
+# {{ VLK }} cluster and host state monitoring
 
 {% include [monitoring-introduction](../../_includes/mdb/monitoring-introduction.md) %}
 
@@ -21,9 +21,9 @@ To view detailed information on the state of a {{ mrd-name }} cluster:
 
 - Management console {#console}
 
-  1. In the [management console]({{ link-console-main }}), select the folder with the cluster you need.
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and select the **{{ ui-key.yacloud.redis.cluster.switch_monitoring }}** tab.
+  1. In the [management console]({{ link-console-main }}), select the folder with the cluster of interest.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the name of your cluster and select the **{{ ui-key.yacloud.redis.cluster.switch_monitoring }}** tab.
   
   1. {% include [open-in-yandex-monitoring](../../_includes/mdb/open-in-yandex-monitoring.md) %}
 
@@ -52,7 +52,7 @@ To view detailed information on the state of a {{ mrd-name }} cluster:
   * **Connected Clients**: Number of open connections for each cluster host.
 
       If the cluster is [sharded](../concepts/sharding.md) or uses [replication](../concepts/replication.md), some of the connections will be used for inter-host communication within the cluster.
-      If you encounter errors when connecting to the cluster, inactive applications may be keeping connections open for too long. If this is the case, [update the {{ VLK }}](../operations/update.md#change-valkey-config) settings by editing the [Timeout](../concepts/settings-list.md#settings-timeout) value.
+      If you encounter errors when connecting to the cluster, inactive applications may be keeping connections open for too long. If this is the case, [update the {{ VLK }} settings](../operations/update.md#change-valkey-config) by editing the [Timeout](../concepts/settings-list.md#settings-timeout) value.
 
   * **Copy-on-write allocation**: Memory consumption by {{ VLK }} processes when using [COW (copy-on-write)](https://en.wikipedia.org/wiki/Copy-on-write), in bytes.
 
@@ -68,7 +68,7 @@ To view detailed information on the state of a {{ mrd-name }} cluster:
 
   * **Evicted keys**: Number of keys deleted from memory when inserting new data.
 
-      By default, {{ VLK }} applies the **noeviction** memory policy, which prevents key deletion and returns an error if memory is too low to insert new data. To use a different memory management policy, adjust the [Maxmemory policy](../concepts/settings-list.md#settings-maxmemory-policy) value in the [{{ VLK }}](./update.md#change-valkey-config) settings.
+      By default, {{ VLK }} applies the **noeviction** memory policy, which prevents key deletion and returns an error if memory is too low to insert new data. To use a different memory management policy, adjust the [Maxmemory policy](../concepts/settings-list.md#settings-maxmemory-policy) value in the [{{ VLK }} settings](./update.md#change-valkey-config).
 
   * **Inner memory limit**: Amount of RAM available for {{ VLK }} processes, in bytes:
 
@@ -90,7 +90,7 @@ To view detailed information on the state of a {{ mrd-name }} cluster:
 
       If **used_memory_rss** approaches **memory_limit**, the operating system may forcibly terminate the relevant {{ VLK }} process. To avoid this:
       * Change the application logic to reduce the amount of data stored in {{ VLK }}.
-      * Change the [Maxmemory policy](../concepts/settings-list.md#settings-maxmemory-policy) value defining the RAM management policy when low on memory in the [{{ VLK }}](./update.md#change-valkey-config) settings.
+      * Change the [Maxmemory policy](../concepts/settings-list.md#settings-maxmemory-policy) value defining the RAM management policy when low on memory in the [{{ VLK }} settings](./update.md#change-valkey-config).
       * [Upgrade the host to a higher class](./update.md#change-resource-preset).
 
   * **Redis Used Memory on Masters**: RAM usage on master hosts, in bytes:
@@ -121,7 +121,7 @@ To view detailed information on the state of a {{ mrd-name }} cluster:
 
       To reduce the number of terminated processes:
       * Change the application logic to reduce the amount of data stored in {{ VLK }}.
-      * Change the [Maxmemory policy](../concepts/settings-list.md#settings-maxmemory-policy) value defining the RAM management policy when low on RAM in the [{{ VLK }}](./update.md#change-valkey-config) settings.
+      * Change the [Maxmemory policy](../concepts/settings-list.md#settings-maxmemory-policy) value defining the RAM management policy when low on RAM in the [{{ VLK }} settings](./update.md#change-valkey-config).
       * [Upgrade the host to a higher class](./update.md#change-resource-preset).
 
   * **Replication buffer size**: [Replication](../concepts/replication.md#replication) backlog size, in bytes:
@@ -155,8 +155,8 @@ To view detailed information on the state of individual {{ mrd-name }} hosts:
 
 - Management console {#console}
 
-  1. In the [management console]({{ link-console-main }}), select the folder with the cluster you need.
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
+  1. In the [management console]({{ link-console-main }}), select the folder with the cluster of interest.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
   1. Click the name of your cluster and select **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** → **{{ ui-key.yacloud.mdb.cluster.hosts.switch_monitoring }}**.
   1. Select the host from the drop-down list.
 
@@ -168,7 +168,7 @@ To view detailed information on the state of individual {{ mrd-name }} hosts:
   * **Disk space usage**: Amount of used and total disk space.
   * **Memory usage**: Amount of RAM used, in bytes. At high workloads, the `Free` value goes down, while the other values go up.
   * **Network bytes**: Network data exchange rate, in bytes per second.
-  * **Network packets**: Number of network packets exchanged per second.
+  * **Network packets**: Network packet exchange rate, in packets per second.
 
   The **Disk read/write bytes** and the **Disk IOPS** charts show the increase of the **Read** value during database read activity, and in **Write**, during database write activity..
 
@@ -185,7 +185,7 @@ To configure state indicator alerts for a [cluster](#monitoring-cluster) and [ho
 
 - Management console {#console}
 
-  1. In the [management console]({{ link-console-main }}), select the folder containing the cluster for which you want to set up alerts.
+  1. In the [management console]({{ link-console-main }}), select the folder with the cluster for which you want to configure alerts.
   1. [Go to](../../console/operations/select-service.md#select-service) ![image](../../_assets/console-icons/display-pulse.svg) **{{ ui-key.yacloud.iam.folder.dashboard.label_monitoring }}**.
   1. Under **{{ ui-key.yacloud_monitoring.homepage.title_service-dashboards }}**, select:
       * **{{ mrd-name }} — Cluster Overview** to set up cluster alerts.
@@ -201,7 +201,7 @@ To configure state indicator alerts for a [cluster](#monitoring-cluster) and [ho
 
 Below are the recommended thresholds for some metrics:
 
-| Metric                                                                                                   | Designation         | `Alarm`                  | `Warning`                |
+| Metric                                                                                                   | Internal metric name         | `Alarm`                  | `Warning`                |
 |----------------------------------------------------------------------------------------------------------:|:-------------------:|:------------------------:|:------------------------:|
 | Database write availability                                                                                  | `can_write`         | `Equal to 0`                | —                        |
 | Number of out-of-memory errors, per hour                                                                   | `redis_oom_count`   | `More than 2`               | `More than 0`               |
@@ -220,15 +220,15 @@ You can view the current RAM of the hosts in the [detailed information about the
 
 {% include [health-and-status](../../_includes/mdb/monitoring-cluster-health-and-status.md) %}
 
-To check the cluster’s state and status:
+To check the cluster state and status:
 
 {% list tabs group=instructions %}
 
 - Management console {#console}
 
-  1. In the [management console]({{ link-console-main }}), select the folder with the cluster you need.
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. In the cluster row, hover over the indicator in the **{{ ui-key.yacloud.common.availability }}** column.
+  1. In the [management console]({{ link-console-main }}), select the folder with the cluster of interest.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Hover over the indicator in the cluster row of the **{{ ui-key.yacloud.common.availability }}** column.
 
 {% endlist %}
 

@@ -256,6 +256,8 @@ items:
             href: security/single-sign-on/saml-sonarqube.md
           - name: OpenVPN Access Server
             href: security/single-sign-on/saml-ovpn.md
+          - name: Использование OAuth2 Proxy для приложений, не поддерживающих SSO
+            href: security/single-sign-on/oidc-nginx-oauth2-proxy.md
       - name: Загрузка аудитных логов в {{ mos-name }}
         hidden: true
         href: security/trails-logs-opensearch.md
@@ -265,6 +267,10 @@ items:
           Получение сведений для запроса на включение ресурса в белый список
           Минцифры
         href: security/info-for-federal-ip-whitelist.md
+      - name: >-
+          Загрузка объектов в бакет {{ objstorage-name }} с помощью эфемерного
+          ключа доступа
+        href: security/ephemeral-key-storage.md
   - name: Хранение и восстановление данных
     items:
       - name: Все руководства
@@ -399,6 +405,10 @@ items:
         href: testing/loadtesting-gitlab-ci.md
       - name: Развертывание {{ GLR }} на виртуальной машине {{ compute-name }}
         href: dev/install-gitlab-runner.md
+      - name: >-
+          Развертывание воркера {{ src-full-name }} на виртуальной машине {{
+          compute-name }}
+        href: dev/self-hosted-worker-sourcecraft.md
       - name: Сравнение результатов нагрузочных тестов
         href: testing/loadtesting-results-compare.md
       - name: >-

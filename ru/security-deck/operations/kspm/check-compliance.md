@@ -5,6 +5,8 @@ description: В данном разделе вы узнаете, как испо
 
 # Проверить соответствие инфраструктуры стандартам безопасности
 
+{% include [note-preview](../../../_includes/note-preview.md) %}
+
 {% include [check-compliance-instruction-intro](../../../_includes/security-deck/check-compliance-instruction-intro.md) %}
 
 {% list tabs group=instructions %}
@@ -32,4 +34,4 @@ description: В данном разделе вы узнаете, как испо
 
 #### См. также {#see-also}
 
-* [{#T}](../../concepts/standard-compliance.md)
+* [{#T}](../../concepts/standard-compliance/index.md)

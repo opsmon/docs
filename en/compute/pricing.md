@@ -7,26 +7,13 @@ editable: false
 
 # {{ compute-name }} pricing policy
 
-
-
-{% note warning %}
-
-From January 23, 2026, resource prices for the **GPU PLATFORM V4** will change. This includes an increase in the price of using GPU for regular and preemptible VMs and will amount to {% calc [currency=USD] round((1016.90 / 122) × 1000000) / 1000000 %} per 1 hour, without VAT.
-
-Cost of resources for **GPU PLATFORM V4** from January 23, 2026:
-
-{% include [usd-from-23-01-2026](../_pricing/compute/usd-from-23-01-2026.md) %}
-
-{% endnote %}
-
-
 {% note tip %}
 
 
 
 
 
-For a cost calculation, use our [calculator](https://yandex.cloud/en/prices?state=577e4326f11d#calculator) on the {{ yandex-cloud }} website or check out the pricing below.
+For cost estimation, use [this calculator](https://yandex.cloud/en/prices?state=577e4326f11d#calculator) on our website or check out the pricing below.
 
 
 {% endnote %}
@@ -42,7 +29,7 @@ For a cost calculation, use our [calculator](https://yandex.cloud/en/prices?stat
 
 The {{ compute-name }} usage cost includes:
 * VM computing resources:
-  * Type and number of cores (vCPUs).
+  * Type and number of vCPUs.
   * Number of graphics accelerators ([GPUs](concepts/gpus.md)). 
   * Amount of RAM.
 * Operating systems.
@@ -61,7 +48,7 @@ The monthly prices are based on 720 hours per month.
 
 {% include [reserved-pools-preview-notice](../_includes/compute/reserved-pools-preview-notice.md) %}
 
-The cost of using [reserved instance pools](./concepts/reserved-pools.md) covers the whole unused amount of reserved [computing resources of VMs](#prices-instance-resources), [GPU clusters](#prices-gpu-clusters), and [software accelerated networks](#software-accelerated-network).
+The cost of using [reserved instance pools](./concepts/reserved-pools.md) covers the whole unused amount of reserved [computing resources of VMs](#prices-instance-resources), [GPU clusters](#prices-gpu-clusters), and [software-accelerated networks](#software-accelerated-network).
 
 Pool rates apply to slots with the `available` [status](./concepts/reserved-pools.md#slot-stats), whereas `used` slots are [billed as regular VM instances](#instance). That is, if you attach a VM to a pool, it continues to be billed separately while using some of the pool’s resources. As a result, your pool usage fee is reduced. When you remove a VM from the pool, the computing resources are released and the fee for using the pool increases.
 
@@ -181,38 +168,43 @@ An `intel-6338-c108-m704-n3200x6` dedicated host running for an hour is charged 
 {% endcut %}
 
 
-### Software-Accelerated Network usage {#software-accelerated-network}
+### Using a software-accelerated network {#software-accelerated-network}
 
-A [software-accelerated network](./concepts/software-accelerated-network.md) in {{ compute-name }} is provided by additional vCPU cores, which are charged separately. The number of additional cores depends on the platform and the VM's number of vCPUs, as shown in the table below:
+In {{ compute-name }}, a [software-accelerated network](./concepts/software-accelerated-network.md) operates on additional vCPUs, which are subject to a fee. The table below shows the number of additional vCPUs depending on platform and the number of VM vCPUs:
+
 
 #|
-|| **Platform** | **VM vCPU count** | **Number of Additional vCPUs** 
-**for the Software-Accelerated Network** ||
-|| Intel Broadwell | less than 18 | 2 ||
-|| ^ | 18 or more | 4 ||
-|| Intel Cascade Lake | less than 20 | 2 ||
-|| ^ | 20 or more | 4 ||
-|| Intel Ice Lake | less than 36 | 2 ||
-|| ^ | 36 or more | 4 ||
-|| Intel Ice Lake (Compute Optimized) | less than 16 | 2 ||
-|| ^ | 16 or more | 4 ||
-|| AMD Zen 3 | less than 96 | 2 ||
-|| ^ | 96 or more | 4 ||
-|| AMD Zen 4 | less than 96 | 2 ||
-|| ^ | 96 or more | 4 ||
-|| AMD Zen 4 (Compute-Optimized) | less than 48 | 2 ||
-|| ^ | 48 or more | 4 ||
+|| **Platform** | **VM vCPUs** | **Additional vCPUs** 
+**for a software-accelerated network** ||
+|| Intel Broadwell | fewer than 18 | 2 ||
+|| ^ | 18 and more | 4 ||
+|| Intel Cascade Lake | fewer than 20 | 2 ||
+|| ^ | 20 and more | 4 ||
+|| Intel Ice Lake | fewer than 36 | 2 ||
+|| ^ | 36 and more | 4 ||
+|| Intel Ice Lake (Compute Optimized) | fewer than 16 | 2 ||
+|| ^ | 16 and more | 4 ||
+|| AMD Zen 3 | fewer than 96 | 2 ||
+|| ^ | 96 and more | 4 ||
+|| AMD Zen 4 | fewer than 96 | 2 ||
+|| ^ | 96 and more | 4 ||
+|| AMD Zen 4 (Compute-Optimized) | fewer than 48 | 2 ||
+|| ^ | 48 and more | 4 ||
 |#
+
+
 
 ## Discount for committed volume of services (CVoS) {#cvos}
 
 {% include [cvos](../_includes/mdb/cvos.md) %}
 
-{{ compute-name }} provides two types of CVoS: for vCPUs and RAM. In the management console, you can see how much you can potentially save with CVoS at the current consumption level. You can also forecast your monthly payments for the required number of vCPUs and RAM.
+{{ compute-name }} provides two types of CVoS: for vCPUs and RAM. In the management console, you can see how much you can potentially save with CVoS at the current consumption level. You can also estimate your monthly payments for the required number of vCPUs and RAM.
 
 {% note info %}
 
-CVoS discount is only available for certain types of resources. If the relevant CVoS columns under [Prices for the Russia region](#prices) are blank, this means the resource is not supported. Currently, you cannot order storage or web traffic this way.
+For resources provided under CVoS, the [Prices for the Russia region](#prices) section presents their CVoS prices separately with expiration date.
+
+Currently, you cannot order storage or web traffic this way.
 
 {% endnote %}
 
@@ -223,13 +215,12 @@ _{{ price-per-hour-count-per-second }}_
 
 
 
-
 {% include [pricing-diff-regions](../_includes/pricing-diff-regions.md) %}
 
 
-Gen2 and AMD Zen 3 are available upon request and subject to technical availability.
+Access to Gen2 and AMD Zen 3 platforms is provided upon request, if technically feasible.
 
-For dedicated hosts the prices are specified for 1 vCPU, 1 GB of RAM, and 1 GB of local SSD storage. You pay for all the resources available on the dedicated host, regardless of whether you use them or not. For example, let’s assume a host of the `intel-6338-c108-m704-n3200x6` [type](concepts/dedicated-host.md#host-types) has the following resources available: 108 vCPUs, 704 GB of RAM, and 19,200 GB of storage on local SSDs. For the relevant example of cost calculation, see [above](#dedicated-hosts).
+Dedicated hosts are priced per 1 vCPU, 1 GB RAM, and 1 GB of local disk storage. You pay for all the resources available on the dedicated host, regardless of whether you use them or not. For example, let’s assume a host of the `intel-6338-c108-m704-n3200x6` [type](concepts/dedicated-host.md#host-types) has the following resources available: 108 vCPUs, 704 GB of RAM, and 19,200 GB of storage on local SSDs. For the relevant example of cost calculation, see [above](#dedicated-hosts).
 
 
 

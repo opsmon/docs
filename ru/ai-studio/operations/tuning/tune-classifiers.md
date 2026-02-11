@@ -245,7 +245,7 @@ description: Следуя данной инструкции, вы сможете
      grpcurl \
        -H "Authorization: Bearer <IAM-токен>" \
        -d '{"operation_id": "<идентификатор_операции>"}' \
-       {{ api-host-llm }}:443 yandex.cloud.operation.OperationService/Get
+       {{ api-host-operation }}:443 yandex.cloud.operation.OperationService/Get
      ```
 
      Где:
@@ -297,4 +297,4 @@ description: Следуя данной инструкции, вы сможете
 #### См. также {#see-also}
 
 * [{#T}](../../tutorials/models-fine-tuning.md)
-* Больше примеров доступно в [репозитории на GitHub](https://github.com/yandex-cloud/yandex-cloud-ml-sdk/tree/master/examples/sync/tuning).
+* Больше примеров доступно в [репозитории на GitHub](https://github.com/yandex-cloud/yandex-ai-studio-sdk/tree/master/examples/sync/tuning).

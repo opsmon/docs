@@ -25,6 +25,8 @@
 
 * Вручную {#manual}
 
+    {% include [public-access](../../_includes/mdb/note-public-access.md) %}
+
     1. [Создайте кластер-источник {{ mmy-name }}](../../managed-mysql/operations/cluster-create.md#create-cluster) в любой [зоне доступности](../../overview/concepts/geo-scope.md), с хостами любой подходящей конфигурации в публичном доступе и следующими настройками:
 
         * **{{ ui-key.yacloud.mdb.forms.database_field_name }}** — `mmy_db`.
@@ -43,7 +45,7 @@
 
     1. Убедитесь, что группы безопасности кластеров настроены правильно и допускают подключение к ним:
 
-        * [{{ mmy-name }}](../../managed-mysql/operations/connect.md#configure-security-groups).
+        * [{{ mmy-name }}](../../managed-mysql/operations/connect/index.md#configure-security-groups).
         * [{{ mgp-name }}](../../managed-greenplum/operations/connect.md#configuring-security-groups).
 
 * С помощью {{ TF }} {#tf}
@@ -87,7 +89,7 @@
 
 ## Подготовьте тестовые данные {#prepare-data}
 
-1. [Подключитесь к базе данных](../../managed-mysql/operations/connect.md) `mmy_db` в кластере-источнике {{ mmy-name }}.
+1. [Подключитесь к базе данных](../../managed-mysql/operations/connect/index.md) `mmy_db` в кластере-источнике {{ mmy-name }}.
 
 1. Создайте простую таблицу `table1`:
 
@@ -185,7 +187,7 @@
 
 ### Проверьте работу репликации {#verify-replication}
 
-1. [Подключитесь к базе данных](../../managed-mysql/operations/connect.md) `mmy_db` в кластере-источнике {{ mmy-name }}.
+1. [Подключитесь к базе данных](../../managed-mysql/operations/connect/index.md) `mmy_db` в кластере-источнике {{ mmy-name }}.
 
 1. Добавьте данные в таблицу `table1`:
 

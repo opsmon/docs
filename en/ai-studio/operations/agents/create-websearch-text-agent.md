@@ -14,13 +14,12 @@ To use an example:
 
 {% endlist %}
 
-## Create {#create-agent}
+## Create an agent {#create-agent}
 
 {% list tabs group=programming_language %}
 
 - Python {#python}
 
-  1. [Create a search index](./manage-searchindex.md#create-index).
   1. Create a file named `index.py` and add the following code to it:
 
      ```python
@@ -42,16 +41,15 @@ To use an example:
          input="Give me a quick overview of LLM news for September 2025.",
          tools=[
              {
-                 "web_search": {
-                     "filters": {
-                         "allowed_domains": [
-                             "habr.ru"
-                         ]
-                     },
-                     "user_location": {
-                         "region": "213",
-                     }
-                 }
+                "type": "web_search",
+                "filters": {
+                    "allowed_domains": [
+                        "habr.ru"
+                    ]
+                },
+                "user_location": {
+                        "region": "213",
+                    }
              }
          ],
          temperature=0.3,
@@ -73,7 +71,6 @@ To use an example:
       ```bash
       export YANDEX_CLOUD_FOLDER=<folder_ID>
       export YANDEX_CLOUD_API_KEY=<API_key>
-      export VECTOR_STORE_ID=<search_index_ID>
       ```
 
   1. Run the file you created:

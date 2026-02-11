@@ -21,7 +21,7 @@ To use the examples:
   1. Get API authentication credentials as described here: [{#T}](../../api-ref/authentication.md).
 
       To access the {{ yandexart-name }} API, first assign the `ai.imageGeneration.user` [role](../../security/index.md#imageGeneration-user) to the user or service account you will use to authenticate with the API.
-  1. Install the following tools:
+  1. Install these tools:
 
       * [cURL](https://curl.haxx.se) to send API requests.
       * [jq](https://github.com/jqlang/jq) to handle JSON files.
@@ -41,7 +41,7 @@ To use the examples:
 - Management console {#console}
 
   1. In the [management console]({{ link-console-main }}), select a folder for which your account has the `ai.playground.user` role or higher.
-  1. Click ![image](../../../_assets/console-icons/dots-9.svg) **{{ ui-key.yacloud.iam.folder.dashboard.label_products }}** on the left-hand panel and select **{{ ui-key.yacloud.iam.folder.dashboard.label_ai-studio }}** or find it using the search bar on the dashboard.
+  1. [Go](../../../console/operations/select-service.md#select-service) to **{{ ui-key.yacloud.iam.folder.dashboard.label_ai-studio }}**.
   1. In the panel that opens, click ![image](../../../_assets/console-icons/flask.svg) **{{ ui-key.yacloud.yagpt.playground }}**.
 
      ![screen01](../../../_assets/ai-studio/quickstart/yandexart/screen01.png)
@@ -86,8 +86,6 @@ To use the examples:
       * `message2`: Clarifying part of the image generation prompt.
 
       {% include [sdk-code-legend](../../../_includes/ai-studio/examples/sdk-code-legend.md) %}
-
-      For more information about accessing the image generation model, see [{#T}](../../concepts/generation/models.md#addressing-models).
       
   1. Run the file you created:
 

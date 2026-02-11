@@ -8,8 +8,8 @@ You can add and remove cluster hosts, as well as manage their settings. To learn
 
 - Management console {#console}
 
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and select the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the name of your cluster and select the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
 
 - CLI {#cli}
 
@@ -37,11 +37,11 @@ You can add and remove cluster hosts, as well as manage their settings. To learn
   ```
 
 
-  You can request the cluster name with the [list of clusters in the folder](cluster-list.md#list-clusters).
+  You can get the cluster name with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
        {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -56,11 +56,11 @@ You can add and remove cluster hosts, as well as manage their settings. To learn
 
         You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
-    1. View the [server response](../api-ref/Cluster/listHosts.md#yandex.cloud.mdb.redis.v1.ListClusterHostsResponse) to make sure your request was successful.
+    1. Check the [server response](../api-ref/Cluster/listHosts.md#yandex.cloud.mdb.redis.v1.ListClusterHostsResponse) to make sure your request was successful.
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -95,7 +95,7 @@ The number of hosts in {{ mrd-name }} clusters is limited by the CPU and RAM quo
 
 {% note info %}
 
-Public access to hosts can only be configured for clusters created with enabled TLS support.
+You can configure public access to hosts only for clusters created with TLS enabled.
 
 {% endnote %}
 
@@ -105,8 +105,8 @@ Public access to hosts can only be configured for clusters created with enabled 
 - Management console {#console}
 
   To create a host:
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and navigate to the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the cluster name and go to the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
   1. Click **{{ ui-key.yacloud.mdb.cluster.hosts.action_add-host }}**.
   1. Specify the following host settings:
      * Availability zone.
@@ -118,7 +118,7 @@ Public access to hosts can only be configured for clusters created with enabled 
      * [Host priority for promotion to master](../concepts/replication.md#master-failover).
 
      
-     * If necessary, configure public access to the host.
+     * Configure public access to the host, if required.
 
 
      * If you are adding a host to a sharded cluster, select a shard.
@@ -154,13 +154,13 @@ Public access to hosts can only be configured for clusters created with enabled 
      If the required subnet is not on the list, [create it](../../vpc/operations/subnet-create.md).
 
 
-  1. See the description of the CLI command for adding a host:
+  1. See the description of the CLI command for adding hosts:
 
      ```bash
      {{ yc-mdb-rd }} host add --help
      ```
 
-  1. Run the command for adding a host:
+  1. Run this command to add a host:
 
      
      ```bash
@@ -175,20 +175,20 @@ Public access to hosts can only be configured for clusters created with enabled 
      
 
      Where:
-     * `--cluster-name`: {{ mrd-name }} cluster name. You can get it with the [list of clusters in a folder](cluster-list.md#list-clusters).
+     * `--cluster-name`: {{ mrd-name }} cluster name. You can get it from the [list of clusters in the folder](cluster-list.md#list-clusters).
      * `--host`: Host settings:
        * `zone-id`: [Availability zone](../../overview/concepts/geo-scope.md).
-       * `subnet-id`: [Subnet ID](../../vpc/concepts/network.md#subnet). Specify it if the selected availability zone has two or more subnets.
+       * `subnet-id`: [Subnet ID](../../vpc/concepts/network.md#subnet). You must specify this setting if the selected availability zone has more than one subnet.
        * `assign-public-ip`: Internet access to the host via a public IP address, `true` or `false`.
        * `replica-priority`: Host priority for assignment as a master if the [primary master fails](../concepts/replication.md#master-failover). It is only available for non-sharded clusters.
-       * `shard-name`: Name of the shard to create the host in if the cluster is sharded.
+       * `shard-name`: Name of the shard to which you are adding the new host if the cluster is sharded.
 
 - {{ TF }} {#tf}
 
   To create a host:
   1. Open the current {{ TF }} configuration file describing your infrastructure.
 
-     For information on how to create such a file, see [Creating a cluster](cluster-create.md).
+     To learn how to create this file, see [Creating a cluster](cluster-create.md).
   1. Add a `host` section to the {{ mrd-name }} cluster description:
 
      
@@ -208,7 +208,7 @@ Public access to hosts can only be configured for clusters created with enabled 
      Where `assign_public_ip` is public access to the host, `true` or `false`.
 
 
-  1. Make sure the settings are correct.
+  1. Validate your configuration.
 
      {% include [terraform-validate](../../_includes/mdb/terraform/validate.md) %}
 
@@ -249,15 +249,15 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
 - Management console {#console}
 
   To change the cluster host settings:
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and select the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the name of your cluster and select the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
   1. Click ![image](../../_assets/console-icons/ellipsis.svg) in the host row and select **{{ ui-key.yacloud.common.edit }}**.
 
   
   1. Specify new host settings:
 
       1. Enable **{{ ui-key.yacloud.mdb.hosts.dialog.field_public_ip }}** to make the host accessible from outside {{ yandex-cloud }}, if required.
-      1. Specify [host priority for assignment as a master](../concepts/replication.md#master-failover).
+      1. Specify [host priority for promotion to master](../concepts/replication.md#master-failover).
 
 
   1. Click **{{ ui-key.yacloud.mdb.hosts.dialog.button_choose }}**.
@@ -268,7 +268,7 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
 
   {% include [default-catalogue](../../_includes/default-catalogue.md) %}
 
-  To change the host parameters, run this command:
+  To change the host settings, run this command:
 
   
   ```bash
@@ -288,7 +288,7 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
   To change the cluster host settings:
   1. Open the current {{ TF }} configuration file describing your infrastructure.
 
-     For information on how to create such a file, see [Creating a cluster](cluster-create.md).
+     To learn how to create this file, see [Creating a cluster](cluster-create.md).
   1. In the {{ mrd-name }} cluster description, change the attributes of the `host` section referring to the host you want to update.
 
      
@@ -308,7 +308,7 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
      Where `assign_public_ip` is public access to the host, `true` or `false`.
 
 
-  1. Make sure the settings are correct.
+  1. Validate your configuration.
 
      {% include [terraform-validate](../../_includes/mdb/terraform/validate.md) %}
 
@@ -320,7 +320,7 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -348,20 +348,20 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
         ```
 
 
-        Where `updateHostSpecs` represents the host parameters:
+        Where `updateHostSpecs` sets the host parameters:
 
-        * `hostName`: Name of the host you need to update. To find out the name, [get a list of hosts in the cluster](#list).
-        * `replicaPriority`: Host priority for promotion to master if the [primary master fails](../concepts/replication.md#master-failover).
-        * `assignPublicIp`: Internet access to the host via a public IP address, `true` or `false`. Public access is only a possibility if the cluster has TLS support enabled.
+        * `hostName`: Name of the host you need to update. To find out the name, [get the list of hosts in the cluster](#list).
+        * `replicaPriority`: Host priority for master promotion during [failover](../concepts/replication.md#master-failover).
+        * `assignPublicIp`: Internet access to the host via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
         * `updateMask`: Comma-separated list of settings you want to update.
 
         You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
-    1. View the [server response](../api-ref/Cluster/updateHosts.md#yandex.cloud.operation.Operation) to make sure your request was successful.
+    1. Check the [server response](../api-ref/Cluster/updateHosts.md#yandex.cloud.operation.Operation) to make sure your request was successful.
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -397,12 +397,12 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
         ```
 
 
-        Where `update_host_specs` represents the host parameters:
+        Where `update_host_specs` sets the host parameters:
 
-        * `host_name`: Name of the host you need to update. To find out the name, [get a list of hosts in the cluster](#list).
-        * `replica_priority`: Host priority for promotion to master if the [primary master fails](../concepts/replication.md#master-failover).
-        * `assign_public_ip`: Internet access to the host via a public IP address, `true` or `false`. Public access is only a possibility if the cluster has TLS support enabled.
-        * `update_mask`: List of settings you want to update as an array of strings (`paths[]`).
+        * `host_name`: Name of the host you need to update. To find out the name, [get the list of hosts in the cluster](#list).
+        * `replica_priority`: Host priority for master promotion during [failover](../concepts/replication.md#master-failover).
+        * `assign_public_ip`: Internet access to the host via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
+        * `update_mask`: List of parameters to update as an array of strings (`paths[]`).
 
         You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
@@ -422,17 +422,17 @@ If you cannot [connect](connect/index.md) to the host you added, check that the 
 
 You can delete a host from a {{ VLK }} cluster as long as it is not the only host in the cluster. To replace the only host, first create a new host and then delete the old one.
 
-If the host is the master at the time of deletion, {{ mrd-name }} will automatically assign another replica as the master.
+If you are deleting the master host, {{ mmy-name }} will automatically promote another replica to master.
 
-You cannot remove a host if the number of hosts in a cluster or cluster shard is equal to the minimum value. For more information, see [Quotas and limits](../concepts/limits.md#mrd-limits).
+You cannot delete a host if the number of hosts in the cluster or shard is equal to the minimum allowed. For more information, see [Quotas and limits](../concepts/limits.md#mrd-limits).
 
 {% list tabs group=instructions %}
 
 - Management console {#console}
 
   To delete a host from a cluster:
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and select the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the name of your cluster and select the **{{ ui-key.yacloud.mdb.cluster.hosts.label_title }}** tab.
   1. In the cluster row, click ![image](../../_assets/console-icons/ellipsis.svg) and select **{{ ui-key.yacloud.common.delete }}**.
   1. In the window that opens, enable **Delete host** and click **{{ ui-key.yacloud.mdb.cluster.hosts.popup-confirm_button }}**.
 
@@ -442,7 +442,7 @@ You cannot remove a host if the number of hosts in a cluster or cluster shard is
 
   {% include [default-catalogue](../../_includes/default-catalogue.md) %}
 
-  To delete a host from the cluster, run this command:
+  To delete a host from a cluster, run this command:
 
   ```bash
   {{ yc-mdb-rd }} host delete <host_name> \
@@ -456,9 +456,9 @@ You cannot remove a host if the number of hosts in a cluster or cluster shard is
   To delete a host from a cluster:
   1. Open the current {{ TF }} configuration file describing your infrastructure.
 
-     For information on how to create such a file, see [Creating a cluster](cluster-create.md).
+     To learn how to create this file, see [Creating a cluster](cluster-create.md).
   1. Delete the `host` section from the {{ mrd-name }} cluster description.
-  1. Make sure the settings are correct.
+  1. Validate your configuration.
 
      {% include [terraform-validate](../../_includes/mdb/terraform/validate.md) %}
 

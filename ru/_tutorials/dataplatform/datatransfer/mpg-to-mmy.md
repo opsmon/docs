@@ -24,6 +24,8 @@
 
 - Вручную {#manual}
 
+    {% include [public-access](../../../_includes/mdb/note-public-access.md) %}
+
     1. [Создайте кластер-источник {{ mpg-name }}](../../../managed-postgresql/operations/cluster-create.md#create-cluster) в любой [зоне доступности](../../../overview/concepts/geo-scope.md), с хостами любой подходящей конфигурации в публичном доступе, и следующими настройками:
 
         * **{{ ui-key.yacloud.mdb.forms.database_field_name }}** — `mpg_db`.
@@ -41,7 +43,7 @@
     1. Убедитесь, что группы безопасности кластеров настроены правильно и допускают подключение к ним:
 
         * [{{ mpg-name }}](../../../managed-postgresql/operations/connect.md#configuring-security-groups).
-        * [{{ mmy-name }}](../../../managed-mysql/operations/connect.md#configuring-security-groups).
+        * [{{ mmy-name }}](../../../managed-mysql/operations/connect/index.md#configuring-security-groups).
 
 - {{ TF }} {#tf}
 
@@ -162,7 +164,7 @@
 
 Если при активации трансфера возникает ошибка вида `Unable to push DDL`:
 
-1. [Подключитесь к базе приемника](../../../managed-mysql/operations/connect.md) и создайте в ней пустую таблицу `measurements`, аналогичную таблице в источнике.
+1. [Подключитесь к базе приемника](../../../managed-mysql/operations/connect/index.md) и создайте в ней пустую таблицу `measurements`, аналогичную таблице в источнике.
 1. Перезапустите трансфер.
 
 {% endnote %}
@@ -173,7 +175,7 @@
 
 ### Проверьте работу копирования {#verify-copy}
 
-1. [Подключитесь к базе данных в кластере-приемнике {{ mmy-name }}](../../../managed-mysql/operations/connect.md).
+1. [Подключитесь к базе данных в кластере-приемнике {{ mmy-name }}](../../../managed-mysql/operations/connect/index.md).
 1. Убедитесь, что таблица из источника перенесена в базу приемника. Для этого выполните запрос:
 
     ```sql
@@ -192,7 +194,7 @@
 
 1. Убедитесь, что добавленная строка появилась в базе данных приемника:
 
-    1. [Подключитесь к базе данных в кластере-приемнике {{ mmy-name }}](../../../managed-mysql/operations/connect.md).
+    1. [Подключитесь к базе данных в кластере-приемнике {{ mmy-name }}](../../../managed-mysql/operations/connect/index.md).
     1. Выполните запрос:
 
         ```sql

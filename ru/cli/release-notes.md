@@ -7,6 +7,76 @@ description: На странице представлены релизы CLI, а
 
 ## Текущая версия {#latest-release}
 
+### Версия 0.191.0 (06.02.26) {#version0.191.0}
+
+#### Изменения в CLI {#cli-0.191.0}
+
+* Изменен способ получения эндпоинта для авторизации.
+* Удалены команды для работы с {{ mms-full-name }}.
+
+#### Изменения в сервисах {{ yandex-cloud }} {#services-0.191.0}
+
+##### {{ managed-k8s-full-name }} {#managed-k8s-name-0.191.0}
+
+В следующие команды для управления группой узлов добавлен параметр `--enable-workload-identity-federation`, с помощью которого можно включить или выключить [интеграцию с федерацией сервисных аккаунтов](../iam/concepts/workload-identity.md) {{ iam-name }}:
+* `yc managed-kubernetes node-group create`;
+* `yc managed-kubernetes node-group update`.
+
+## Предыдущие релизы {#previous-release}
+
+### Версия 0.190.0 (05.02.26) {#version0.190.0}
+
+#### Изменения в сервисах {{ yandex-cloud }}
+
+##### {{ connection-manager-name }}
+Добавлен флаг `--secret-folder-id` для команд создания подключения `yc metadata-hub connection-manager connection create`.
+
+##### {{ sw-name }}
+Исправлен пример cron-выражения для расписания: 
+  * `yc serverless workflow create`
+
+### Версия 0.189.0 (02.02.26) {#version0.189.0}
+
+#### Изменения в сервисах {{ yandex-cloud }}
+
+##### {{ connection-manager-name }}
+Добавлен флаг `--secret-folder-id` для команд создания подключения.
+
+### Версия 0.188.0 (26.01.26) {#version0.188.0}
+
+#### Изменения в сервисах {{ yandex-cloud }}
+
+##### {{ mkf-name }}
+
+Добавлен параметр `message-timestamp-type` для управления топиками {{ KF }} в следующие команды:
+* `yc managed-kafka topic create`;
+* `yc managed-kafka topic update`.
+
+### Версия 0.187.0 (23.01.26) {#version0.187.0}
+
+#### Изменения в CLI {#cli}
+
+Для инструментов командной строки YC CLI добавлено обращение к сервису инициализации.
+
+#### Изменения в сервисах {{ yandex-cloud }}
+
+##### {{ mpg-name }}
+
+Добавлен параметр выбора типа шифрования пароля пользователя `--user_password_encryption` в следующие команды:
+* `yc managed-postgresql user create`;
+* `yc managed-postgresql user update`.
+
+##### {{ objstorage-name }}
+
+В команду получения подписанной ссылки `yc storage s3 presign` добавлен параметр `--http-method` для указания метода HTTP (GET/PUT).
+
+##### {{ mtr-name }}
+
+Добавлен параметр `private-access` в команды управления кластером:
+* `yc managed-trino cluster create`;
+* `yc managed-trino cluster update`;
+* `yc managed-trino cluster get`.
+
 ### Версия 0.186.0 (19.01.26) {#version0.186.0}
 
 #### Изменения в CLI {#cli-0.186.0}
@@ -40,8 +110,6 @@ description: На странице представлены релизы CLI, а
 Добавлены параметры для настройки сложности пароля в следующие команды:
 * `yc organization-manager idp userpool create`;
 * `yc organization-manager idp userpool update`.
-
-## Предыдущие релизы {#previous-release}
 
 ### Версия 0.185.0 (22.12.25) {#version0.185.0}
 

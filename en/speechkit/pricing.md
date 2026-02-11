@@ -83,7 +83,7 @@ In [streaming mode](stt/streaming.md), the billing starts as soon as you send a 
 
 {% endnote %}
 
-> **Examples**:
+> **Examples:**
 >
 > * One audio fragment that is 37 seconds long is billed as 45 seconds.
 >
@@ -122,7 +122,6 @@ The cost of an empty request to any type of speech recognition is equal to that 
 
 
 ## Prices for the Russia region {#prices}
-
 
 {% include [pricing-diff-regions](../_includes/pricing-diff-regions.md) %}
 

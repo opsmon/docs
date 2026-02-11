@@ -17,7 +17,7 @@ items:
             href: operations/update.md
           - name: '{{ VLK }} version upgrade'
             href: operations/cluster-version-update.md
-          - name: Working with {{ VLK }} modules
+          - name: Working with {{ VLK }} models
             href: operations/modules.md
           - name: Stopping and starting a cluster
             href: operations/cluster-stop.md

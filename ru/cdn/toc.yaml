@@ -39,12 +39,14 @@ items:
             href: operations/resources/enable-shielding.md
           - name: Настроить перенаправление запросов
             href: operations/resources/setup-http-rewrite.md
+          - name: Настроить следование перенаправлениям запросов
+            href: operations/resources/setup-follow-redirects.md
+          - name: Настроить скрытие заголовков от источника
+            href: operations/resources/hiding-headers.md
           - name: Настроить доступ по защищенному токену
             href: operations/resources/enable-secure-token.md
           - name: Настроить локационные правила
             href: operations/resources/location-rules.md
-          - name: Управлять дополнительными настройками ресурса
-            href: operations/resources/configure-additions.md
           - name: Отключить ресурс
             href: operations/resources/disable-resource.md
           - name: Управление метками ресурса
@@ -104,8 +106,6 @@ items:
     items:
       - name: Обзор сервиса
         href: concepts/index.md
-      - name: Провайдеры
-        href: concepts/providers.md
       - name: Точки присутствия
         href: concepts/points-of-presence.md
       - name: Ресурс
@@ -132,6 +132,10 @@ items:
             href: concepts/slicing.md
           - name: Экранирование источников
             href: concepts/origins-shielding.md
+          - name: Следование перенаправлениям запросов
+            href: concepts/follow-redirects.md
+          - name: Скрытие заголовков от источника
+            href: concepts/hiding-headers.md
       - name: Перенаправление запросов
         href: concepts/http-rewrite.md
       - name: Кеширование контента
@@ -320,6 +324,8 @@ items:
                 href: api-ref/grpc/Resource/delete.md
               - name: GetProviderCName
                 href: api-ref/grpc/Resource/getProviderCName.md
+              - name: GetAttributes
+                href: api-ref/grpc/Resource/getAttributes.md
           - name: Shielding
             items:
               - name: Overview
@@ -432,9 +438,7 @@ items:
                 href: api-ref/Resource/delete.md
               - name: GetProviderCName
                 href: api-ref/Resource/getProviderCName.md
-  - name: Метрики {{ monitoring-name }} для провайдера EdgeCDN
-    href: metrics.md
-  - name: Метрики {{ monitoring-name }} для провайдера {{ cdn-full-name }}
+  - name: Метрики {{ monitoring-name }}
     href: metrics-yc.md
   - name: Логи запросов
     href: logs-ref.md

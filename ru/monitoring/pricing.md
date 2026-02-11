@@ -27,8 +27,6 @@ editable: false
 
 ### Пример расчета стоимости {#example}
 
-{% include [prices-difference](../_includes/prices-difference.md) %}
-
 
 {% list tabs group=pricing %}
 
@@ -62,7 +60,7 @@ editable: false
 <MDX>
   <PriceList
     serviceIds={['{{ pcs|monitoring }}']}
-    excludeSkuIds={['{{ pc|monitoring.alerts.notifications.sms }}', '{{ pc|monitoring.alerts.notifications.phone }}', '{{ pc|monitoring.prometheus.point.remote_api.read }}', '{{ pc|monitoring.point.ui.read }}', '{{ pc|monitoring.metrics.stored }}', '{{ pc|monitoring.point.sp.write }}']}
+    excludeSkuIds={['{{ pc|monitoring.alerts.notifications.sms }}', '{{ pc|monitoring.alerts.notifications.phone }}', '{{ pc|monitoring.prometheus.point.remote_api.read }}', '{{ pc|monitoring.point.ui.read }}', '{{ pc|monitoring.metrics.stored }}']}
     installationCode="ru"
     currency="RUB"
   />

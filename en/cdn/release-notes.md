@@ -1,13 +1,13 @@
 ---
 title: '{{ cdn-full-name }} release notes'
-description: This section contains {{ cdn-name }} release notes.
+description: This section contains the {{ cdn-name }} release notes.
 ---
 
 # {{ cdn-full-name }} release notes
 
 ## Q3 2025 {#q3-2025}
 
-* Added a [{{ cdn-full-name }} provider](./concepts/providers.md) based on Yandex's proprietary technology.
+* Added a {{ cdn-full-name }} provider based on Yandex's proprietary technology.
 
 * You can now select a provider when creating a [resource](./operations/resources/create-resource.md) or [origin group](./operations/origin-groups/create-group.md).
 

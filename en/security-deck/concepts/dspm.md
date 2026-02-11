@@ -1,14 +1,17 @@
 ---
 title: Data Security Posture Management in {{ sd-full-name }}
-description: Data Security Posture Management, or {{ dspm-name }}, is a {{ sd-name }} module that helps detect sensitive information stored in {{ objstorage-full-name }} buckets, as well as assess its impact on security posture and compliance with regulations and industry standards.
+description: Data Security Posture Management, or {{ dspm-name }}, is a {{ sd-name }} module that helps you detect sensitive information stored in {{ objstorage-full-name }} buckets for assessment of its security posture impact and compliance with industry standards and regulations.
 ---
 
 # Data Security Posture Management ({{ dspm-name }})
 
-{% include [note-preview-by-request](../../_includes/note-preview-by-request.md) %}
+[Data Security Posture Management]({{ link-sd-main }}dspm/), or {{ dspm-name }}, is a tool that helps quickly detect sensitive information stored in {{ objstorage-full-name }} [buckets](../../storage/concepts/bucket.md) and on {{ yandex-360 }} disks for timely actions to protect it by configuring [access policies](../../storage/concepts/policy.md), anonymizing data, etc.
 
-{% include [about-dspm](../../_includes/security-deck/about-dspm.md) %}
+{% note info %}
 
+Disk scanning in {{ yandex-360 }} is in the [Preview](../../overview/concepts/launch-stages.md) stage. To get access, contact [tech support]({{ link-console-support }}) or your account manager.
+
+{% endnote %}
 
 ## Scanning for sensitive information {#scanning}
 
@@ -32,7 +35,7 @@ A data source contains settings and information about the _resources_ to scan:
 * Shared {{ yandex-360 }} [disks]({{ link-yandex }}/support/yandex-360/business/disk/web/{{ lang }}/share/shared-disks)
 * Shared {{ yandex-360 }} [folders]({{ link-yandex }}/support/yandex-360/business/disk/web/{{ lang }}/share/shared-folders)
 
-When you add folders and clouds to a data source, all buckets in the selected clouds and/or folders will be scanned. This includes both the existing buckets and any other buckets added to these clouds and folders by the time of the scan.
+When you add folders and clouds to a data source, all buckets of the selected types in your selected clouds and/or folders will be scanned. This includes both the existing buckets and any other buckets added to these clouds and folders by the time of the scan.
 
 You can set the following scan scopes for a data source:
 
@@ -42,7 +45,9 @@ You can add multiple buckets, folders, and/or clouds as well as create multiple 
 
 ### Data categories {#data-categories}
 
-When setting up a new scan, you can specify the category of data to search for. You can select all the available categories at once or any combination of them.
+When creating a new scan, you can select data categories separately for text and images.
+
+You can select all the available categories at once or any combination of them.
 
 Data categories available for scanning:
 

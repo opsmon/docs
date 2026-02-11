@@ -1,12 +1,12 @@
 ---
 title: '{{ mrd-full-name }} event reference in {{ at-full-name }}'
-description: This page gives a reference for {{ mrd-name }} events tracked in {{ at-name }}.
+description: This page provides a reference for {{ mrd-name }} events tracked in {{ at-name }}.
 ---
 
 
 # {{ at-full-name }} event reference
 
-{{ at-name }} supports tracking control plane events for {{ mrd-full-name }}. For more information, see [{#T}](../audit-trails/concepts/format.md).
+{{ at-name }} supports tracking [control plane](../audit-trails/concepts/format.md) and [data plane](../audit-trails/concepts/format-data-plane.md) events for {{ mrd-full-name }}.
 
 The general format of the `event_type` field value is as follows:
 
@@ -15,11 +15,11 @@ The general format of the `event_type` field value is as follows:
 ```
 
 
-## Management event reference {#control-plane-events}
+## Control plane event reference {#control-plane-events}
 
 {% include [mrd-events](../_includes/audit-trails/events/mrd-events.md) %}
 
 
-## Data event reference {#data-plane-events}
+## Data plane event reference {#data-plane-events}
 
 {% include [mrd-events-dp](../_includes/audit-trails/events/mrd-events-dp.md) %}

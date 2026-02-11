@@ -121,6 +121,8 @@ items:
             href: operations/vm-control/vm-access.md
           - name: Подключить сервисный аккаунт к ВМ
             href: operations/vm-control/vm-connect-sa.md
+          - name: Управлять техническим обслуживанием ВМ с GPU
+            href: operations/vm-control/gpus-maintenance.md
           - name: Удалить ВМ
             href: operations/vm-control/vm-delete.md
       - name: Работа с метаданными ВМ
@@ -634,6 +636,8 @@ items:
             href: tutorials/integrate-nextcloud/terraform.md
       - name: Запуск Docker-образа на ВМ с помощью {{ cloud-registry-name }}
         href: tutorials/docker-cloud-registry.md
+      - name: Развертывание воркера {{ src-full-name }} на ВМ
+        href: tutorials/self-hosted-worker-sourcecraft.md
   - name: Концепции
     items:
       - name: Взаимосвязь ресурсов
@@ -661,7 +665,7 @@ items:
           - name: Статусы
             href: concepts/vm-statuses.md
           - name: Политики обслуживания ВМ
-            href: concepts/vm-policies.md
+            href: concepts/maintenance-policies.md
           - name: Сброс паролей на ВМ Windows
             href: concepts/guest-agent.md
       - name: Метаданные виртуальных машин
@@ -680,6 +684,8 @@ items:
             href: concepts/metadata/identity-document.md
       - name: Графические ускорители GPU
         href: concepts/gpus.md
+      - name: Техническое обслуживание ВМ с GPU
+        href: concepts/gpus-maintenance.md
       - name: Диски и файловые хранилища
         items:
           - name: Обзор

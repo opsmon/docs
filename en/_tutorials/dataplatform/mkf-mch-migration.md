@@ -5,7 +5,7 @@ A {{ mch-name }} cluster can ingest data from {{ KF }} topics in real time. This
 
 To set up data delivery from {{ mkf-name }} to {{ mch-name }}:
 
-1. [Send test data to {{ mkf-name }} topic](#send-sample-data-to-kf).
+1. [Send test data to the {{ mkf-name }} topic](#send-sample-data-to-kf).
 1. [Set up and activate the transfer](#prepare-transfer).
 1. [Test your transfer](#verify-transfer).
 
@@ -16,8 +16,8 @@ If you no longer need the resources you created, [delete them](#clear-out).
 
 ### Required paid resources {#paid-resources}
 
-* {{ mkf-name }} cluster: Computing resources allocated to hosts, storage and backup size (see [{{ mkf-name }} pricing](../../managed-kafka/pricing.md)).
-* {{ mch-name }} cluster: Computing resources allocated to hosts, storage and backup size (see [{{ mch-name }} pricing](../../managed-clickhouse/pricing.md)).
+* {{ mkf-name }} cluster, which includes computing resources allocated to hosts, storage and backup size (see [{{ mkf-name }} pricing](../../managed-kafka/pricing.md)).
+* {{ mch-name }} cluster, which includes the use of computing resources allocated to hosts, storage and backup size (see [{{ mch-name }} pricing](../../managed-clickhouse/pricing.md)).
 * Public IP addresses if public access is enabled for cluster hosts (see [{{ vpc-name }} pricing](../../vpc/pricing.md)).
 
 
@@ -27,16 +27,16 @@ If you no longer need the resources you created, [delete them](#clear-out).
 
 - Manually {#manual}
 
-    1. [Create a {{ mkf-name }} source cluster](../../managed-kafka/operations/cluster-create.md) in any suitable [configuration](../../managed-kafka/concepts/instance-types.md). Enable public access to the cluster during creation so you can connect to it from your local machine. Connections from within the {{ yandex-cloud }} network are enabled by default.
+    1. [Create a {{ mkf-name }} source cluster](../../managed-kafka/operations/cluster-create.md) of any suitable [configuration](../../managed-kafka/concepts/instance-types.md). To be able to connect to the cluster not only from within the {{ yandex-cloud }} network but also from your local machine, enable public access when creating it.
 
     1. [Create a topic](../../managed-kafka/operations/cluster-topics.md#create-topic) in the {{ mkf-name }} cluster.
 
-    1. [Create users](../../managed-kafka/operations/cluster-accounts.md#create-account) so that the [producer and consumer](../../managed-kafka/concepts/producers-consumers.md) can access the topic in the {{ mkf-name }} cluster:
+    1. To enable the [producer and consumer](../../managed-kafka/concepts/producers-consumers.md) to access the topic in the {{ mkf-name }} cluster, [create](../../managed-kafka/operations/cluster-accounts.md#create-account) the following users:
 
         * With the `ACCESS_ROLE_PRODUCER` role for the producer.
         * With the `ACCESS_ROLE_CONSUMER` role for the consumer.
 
-    1. Create a [{{ mch-name }} target cluster](../../managed-clickhouse/operations/cluster-create.md) in any suitable [configuration](../../managed-clickhouse/concepts/instance-types.md). Enable public access to the cluster during creation so you can connect to it from your local machine. Connections from within the {{ yandex-cloud }} network are enabled by default.
+    1. Create a [{{ mch-name }} target cluster](../../managed-clickhouse/operations/cluster-create.md) of any suitable [configuration](../../managed-clickhouse/concepts/instance-types.md). To be able to connect to the cluster not only from within the {{ yandex-cloud }} network but also from your local machine, enable public access when creating it.
 
     
     1. If using security groups, configure them to allow internet access to your clusters:
@@ -58,9 +58,9 @@ If you no longer need the resources you created, [delete them](#clear-out).
 
         * [Network](../../vpc/concepts/network.md#network).
         * [Subnet](../../vpc/concepts/network.md#subnet).
-        * [security group](../../vpc/concepts/security-groups.md) and rules required to connect to the clusters from the internet.
+        * [Security group](../../vpc/concepts/security-groups.md) and rules for internet access to the clusters.
         * {{ mkf-name }} source cluster.
-        * Topic and two {{ KF }} users on whose behalf the producer and consumer will connect to the topic.
+        * Topic and two {{ KF }} users for producer and consumer access.
         * {{ mch-name }} target cluster.
         * Target endpoint.
         * Transfer.
@@ -69,11 +69,11 @@ If you no longer need the resources you created, [delete them](#clear-out).
 
         * {{ mkf-name }} source cluster parameters:
 
-            * `source_user_producer` and `source_password_producer`: Producer's username and password.
-            * `source_user_consumer` and `source_password_consumer`: Consumer's username and password.
+            * `source_user_producer` and `source_password_producer`: Producer's username and password, respectively.
+            * `source_user_consumer` and `source_password_consumer`: Consumer's username and password, respectively.
             * `source_topic_name`: Topic name.
 
-        * The {{ mch-name }} target cluster parameters that will be used as the [target endpoint parameters](../../data-transfer/operations/endpoint/target/clickhouse.md#managed-service):
+        * {{ mch-name }} target cluster parameters to use for the [target endpoint](../../data-transfer/operations/endpoint/target/clickhouse.md#managed-service):
 
             * `target_db_name`: {{ mch-name }} database name.
             * `target_user` and `target_password`: Database owner username and password.
@@ -98,13 +98,13 @@ If you no longer need the resources you created, [delete them](#clear-out).
 
 1. Install the following tools:
 
-    * [kafkacat](https://github.com/edenhill/kcat): To read and write data to the {{ KF }} topic.
+    * [kafkacat](https://github.com/edenhill/kcat): For data reads and writes in the {{ KF }} topic.
 
         ```bash
         sudo apt update && sudo apt install --yes kafkacat
         ```
 
-        Verify that you can use it to [establish SSL connections to your {{ mkf-name }} clusters](../../managed-kafka/operations/connect/clients.md#bash-zsh).
+        Make sure you can use it to [establish SSL connections to your {{ mkf-name }} clusters](../../managed-kafka/operations/connect/clients.md#bash-zsh).
 
     * [clickhouse-client]({{ ch.docs }}/interfaces/cli/): For connecting to a database within the {{ mch-name }} cluster.
 
@@ -127,7 +127,7 @@ If you no longer need the resources you created, [delete them](#clear-out).
 
             {% include [ClickHouse client config](../../_includes/mdb/mch/client-config.md) %}
 
-        Verify that you can [establish an SSL connection to the {{ mch-name }} cluster](../../managed-clickhouse/operations/connect/clients.md) via clickhouse-client.
+        Verify that you can [establish an SSL connection to the {{ mch-name }} cluster](../../managed-clickhouse/operations/connect/clients.md) via `clickhouse-client`.
 
     * [jq](https://stedolan.github.io/jq/): For stream processing of JSON files.
 
@@ -137,7 +137,7 @@ If you no longer need the resources you created, [delete them](#clear-out).
 
 ## Send test data to the {{ mkf-name }} topic {#send-sample-data-to-kf}
 
-Suppose that your {{ KF }} topic receives data from car sensors. This data will be transmitted as {{ KF }} messages in JSON format:
+Let's assume your {{ KF }} topic receives car sensor data. This data will be transmitted as {{ KF }} messages in JSON format:
 
 ```json
 {
@@ -153,9 +153,9 @@ Suppose that your {{ KF }} topic receives data from car sensors. This data will 
 }
 ```
 
-The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/interfaces/formats/#jsoneachrow) to insert data into `Kafka` tables. This format converts strings from {{ KF }} messages to relevant column values.
+The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/interfaces/formats/#jsoneachrow) to insert data into `Kafka` tables. This format converts strings from {{ KF }} messages to the relevant column values.
 
-1. Create a `sample.json` file with test data:
+1. Create a file named `sample.json` with test data:
 
     {% cut "sample.json" %}
 
@@ -199,7 +199,7 @@ The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/inte
 
     {% endcut %}
 
-1. Send data from the `sample.json` file to the {{ mkf-name }} topic using `jq` and `kafkacat`:
+1. Send data from `sample.json` to the {{ mkf-name }} topic using `jq` and `kafkacat`:
 
     ```bash
     jq -rc . sample.json | kafkacat -P \
@@ -219,10 +219,10 @@ The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/inte
 
 1. [Create a source endpoint](../../data-transfer/operations/endpoint/index.md#create):
 
-    * **{{ ui-key.yacloud.data-transfer.forms.label-database_type }}**: `Kafka`
+    * **{{ ui-key.yacloud.data-transfer.forms.label-database_type }}**: `Kafka`.
     * **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaSource.title }}** → **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaSource.connection.title }}**:
 
-        * **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaSourceConnection.connection_type.title }}**: `{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaConnectionType.managed.title }}`
+        * **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaSourceConnection.connection_type.title }}**: `{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaConnectionType.managed.title }}`.
 
             * **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.ManagedKafka.cluster_id.title }}**: Select the source cluster from the list.
             * **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.ManagedKafka.auth.title }}**:
@@ -234,7 +234,7 @@ The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/inte
 
         * **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaSource.advanced_settings.title }}** → **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaSourceAdvancedSettings.converter.title }}**:
 
-            * **{{ ui-key.yc-data-transfer.data-transfer.console.form.common.console.form.common.ConvertRecordOptions.format.title }}**: `JSON`
+            * **{{ ui-key.yc-data-transfer.data-transfer.console.form.common.console.form.common.ConvertRecordOptions.format.title }}**: `JSON`.
             * **{{ ui-key.yc-data-transfer.data-transfer.console.form.common.console.form.common.ConvertRecordOptions.data_schema.title }}**: `{{ ui-key.yc-data-transfer.data-transfer.console.form.common.console.form.common.DataSchema.json_fields.title }}`:
 
                 Copy and paste the data schema in JSON format:
@@ -306,14 +306,14 @@ The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/inte
 
                 * **{{ ui-key.yc-data-transfer.data-transfer.console.form.clickhouse.console.form.clickhouse.ClickHouseTarget.advanced_settings.title }}** → **Upload data in JSON format**: Enable this option if you enabled **{{ ui-key.yc-data-transfer.data-transfer.console.form.kafka.console.form.kafka.KafkaSourceAdvancedSettings.converter.title }}** in the advanced settings of the source endpoint.
 
-        1. [Create](../../data-transfer/operations/transfer.md#create) a **_{{ ui-key.yc-data-transfer.data-transfer.console.form.transfer.console.form.transfer.TransferType.increment.title }}_**-type transfer configured to use the new endpoints.
+        1. [Create a transfer](../../data-transfer/operations/transfer.md#create) of the **_{{ ui-key.yc-data-transfer.data-transfer.console.form.transfer.console.form.transfer.TransferType.increment.title }}_**-type that will use the endpoints you created.
         1. [Activate](../../data-transfer/operations/transfer.md#activate) the transfer.
 
     - {{ TF }} {#tf}
 
         1. In the `data-transfer-mkf-mch.tf` file, uncomment the following:
 
-            * The `source_endpoint_id` variable and set it to the value of the endpoint ID for the source created in the previous step.
+            * `source_endpoint_id` and set it to the value of the source endpoint ID from the previous step.
             * `yandex_datatransfer_endpoint` and `yandex_datatransfer_transfer` resources.
 
         1. Validate your {{ TF }} configuration files using this command:
@@ -328,15 +328,15 @@ The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/inte
 
             {% include [terraform-apply](../../_includes/mdb/terraform/apply.md) %}
 
-            The transfer will activate automatically upon creation.
+            The transfer will be activated automatically upon creation.
 
     {% endlist %}
 
-## Test the transfer {#verify-transfer}
+## Test your transfer {#verify-transfer}
 
 1. Wait for the transfer status to change to **{{ ui-key.yacloud.data-transfer.label_connector-status-RUNNING }}**.
 
-1. Make sure that the data from the source {{ mkf-name }} cluster has been transferred to the {{ mch-name }} database:
+1. Make sure the data from the {{ mkf-name }} source cluster has been transferred to the {{ mch-name }} database:
 
     1. [Connect to the cluster](../../managed-clickhouse/operations/connect/clients.md#clickhouse-client) using `clickhouse-client`.
 
@@ -360,9 +360,9 @@ The {{ mch-name }} cluster will use [JSONEachRow data format]({{ ch.docs }}/inte
        -X ssl.ca.location={{ crt-local-dir }}{{ crt-local-file-root }} -Z
     ```
 
-1. Make sure that the new values are now in the {{ mch-name }} database:
+1. Check that the {{ mch-name }} database shows the new values:
 
-    1. [Connect to the cluster](../../managed-clickhouse/operations/connect/clients.md#clickhouse-client) via `clickhouse-client`.
+    1. [Connect to the cluster](../../managed-clickhouse/operations/connect/clients.md#clickhouse-client) using `clickhouse-client`.
 
     1. Run this query:
 
@@ -378,11 +378,11 @@ Before deleting the resources, [deactivate the transfer](../../data-transfer/ope
 
 {% endnote %}
 
-To reduce the consumption of resources you do not need, delete them:
+To reduce the consumption of resources, delete those you do not need:
 
 1. [Delete the transfer](../../data-transfer/operations/transfer.md#delete).
 1. [Delete the source endpoint](../../data-transfer/operations/endpoint/index.md#delete).
-1. Delete other resources using the same method used for their creation:
+1. Delete the other resources depending on how you created them:
 
    {% list tabs group=instructions %}
 

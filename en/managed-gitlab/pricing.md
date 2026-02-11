@@ -13,7 +13,7 @@ editable: false
 
 
 
-For a cost calculation, use our [calculator](https://yandex.cloud/en/prices?state=fa8a272b5f0e#calculator) on the {{ yandex-cloud }} website or check out the pricing below.
+For cost estimation, use [this calculator](https://yandex.cloud/en/prices?state=fa8a272b5f0e#calculator) on our website or check out the pricing below.
 
 
 {% endnote %}
@@ -84,8 +84,9 @@ Total instance cost calculation:
 
 ## Prices for the Russia region {#prices}
 
-
 {% include [pricing-diff-regions](../_includes/pricing-diff-regions.md) %}
+
+The price of computing resources depends on the selected [approval rule](concepts/approval-rules.md) configuration.
 
 
 

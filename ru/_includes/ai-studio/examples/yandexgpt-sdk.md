@@ -2,7 +2,7 @@
 #!/usr/bin/env python3
 
 from __future__ import annotations
-from yandex_cloud_ml_sdk import YCloudML
+from yandex_ai_studio_sdk import AIStudio
 
 messages = [
     {
@@ -20,13 +20,13 @@ messages = [
 
 
 def main():
-    sdk = YCloudML(
+    sdk = AIStudio(
         folder_id="<идентификатор_каталога>",
         auth="<API-ключ>",
     )
 
     result = (
-        sdk.models.chat("yandexgpt").configure(temperature=0.5).run(messages)
+        sdk.models.completions("yandexgpt").configure(temperature=0.5).run(messages)
     )
 
     for alternative in result:

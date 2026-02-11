@@ -16,9 +16,9 @@ You can [create a sharded cluster](./cluster-create.md#create-cluster) or [enabl
 
 - Management console {#console}
 
-  1. In the [management console]({{ link-console-main }}), select the folder with the cluster you need.
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and select the **{{ ui-key.yacloud.redis.cluster.switch_shards }}** tab.
+  1. In the [management console]({{ link-console-main }}), select the folder with the cluster of interest.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the name of your cluster and select the **{{ ui-key.yacloud.redis.cluster.switch_shards }}** tab.
 
 - CLI {#cli}
 
@@ -46,7 +46,7 @@ You can [create a sharded cluster](./cluster-create.md#create-cluster) or [enabl
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -61,11 +61,11 @@ You can [create a sharded cluster](./cluster-create.md#create-cluster) or [enabl
 
         You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
-    1. View the [server response](../api-ref/Cluster/listShards.md#yandex.cloud.mdb.redis.v1.ListClusterShardsResponse) to make sure your request was successful.
+    1. Check the [server response](../api-ref/Cluster/listShards.md#yandex.cloud.mdb.redis.v1.ListClusterShardsResponse) to make sure your request was successful.
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -111,7 +111,7 @@ You can [create a sharded cluster](./cluster-create.md#create-cluster) or [enabl
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -130,7 +130,7 @@ You can [create a sharded cluster](./cluster-create.md#create-cluster) or [enabl
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -171,8 +171,8 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
 
   To add a shard:
 
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and navigate to the **{{ ui-key.yacloud.redis.cluster.switch_shards }}** tab.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the cluster name and go to the **{{ ui-key.yacloud.redis.cluster.switch_shards }}** tab.
   1. Click **{{ ui-key.yacloud.mdb.cluster.shards.action_add-shard }}**.
   1. Specify **{{ ui-key.yacloud.mdb.forms.base_field_shard-name }}**.
   1. Under **{{ ui-key.yacloud.mdb.forms.section_host }}**:
@@ -212,7 +212,7 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
 
   1. Open the current {{ TF }} configuration file describing your infrastructure.
 
-     For information on how to create such a file, see [Creating a cluster](cluster-create.md).
+     To learn how to create this file, see [Creating a cluster](cluster-create.md).
   1. Add the appropriate number of `host` sections to the {{ mrd-name }} cluster description and specify the shard name in the `shard_name` argument:
 
      ```hcl
@@ -230,7 +230,7 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
 
      Where `assign_public_ip` is public access to the host, `true` or `false`.
 
-  1. Make sure the settings are correct.
+  1. Validate your configuration.
 
      {% include [terraform-validate](../../_includes/mdb/terraform/validate.md) %}
 
@@ -244,7 +244,7 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -266,9 +266,9 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
                           "replicaPriority": "<host_priority>",
                           "assignPublicIp": <public_access_to_cluster_host>
                         },
-                        { <similar_configuration_for_host_2> },
+                        { <similar_settings_for_host_2> },
                         { ... },
-                        { <similar_configuration_for_host_N> }
+                        { <similar_settings_for_host_N> }
                       ]
                     }'
         ```
@@ -279,18 +279,18 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
         * `hostSpecs`: Host settings:
 
             * `zoneId`: [Availability zone](../../overview/concepts/geo-scope.md).
-            * `subnetId`: [Subnet ID](../../vpc/concepts/network.md#subnet). Specify it if the selected availability zone has two or more subnets.
+            * `subnetId`: [Subnet ID](../../vpc/concepts/network.md#subnet). You must specify this setting if the selected availability zone has more than one subnet.
             * `shardName`: Shard name for the host.
-            * `replicaPriority`: Host priority for promotion to master if the [primary master fails](../concepts/replication.md#master-failover).
-            * `assignPublicIp`: Internet access to the host via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
+            * `replicaPriority`: Host priority for master promotion during [failover](../concepts/replication.md#master-failover).
+            * `assignPublicIp`: Controls whether the host is accessible via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
 
         You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
-    1. View the [server response](../api-ref/Cluster/addShard.md#yandex.cloud.operation.Operation) to make sure your request was successful.
+    1. Check the [server response](../api-ref/Cluster/addShard.md#yandex.cloud.operation.Operation) to make sure your request was successful.
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -316,9 +316,9 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
                       "replica_priority": "<host_priority>",
                       "assign_public_ip": <public_access_to_cluster_host>
                     },
-                    { <similar_configuration_for_host_2> },
+                    { <similar_settings_for_host_2> },
                     { ... },
-                    { <similar_configuration_for_host_N> }
+                    { <similar_settings_for_host_N> }
                   ]
                 }' \
             {{ api-host-mdb }}:{{ port-https }} \
@@ -331,10 +331,10 @@ For clusters with the **local-ssd** disk type, the minimum allowed number of hos
         * `host_specs`: Host settings:
 
             * `zone_id`: [Availability zone](../../overview/concepts/geo-scope.md).
-            * `subnet_id`: [Subnet ID](../../vpc/concepts/network.md#subnet). Specify it if the selected availability zone has two or more subnets.
+            * `subnet_id`: [Subnet ID](../../vpc/concepts/network.md#subnet). You must specify this setting if the selected availability zone has more than one subnet.
             * `shard_name`: Shard name for the host.
-            * `replica_priority`: Host priority for promotion to master if the [primary master fails](../concepts/replication.md#master-failover).
-            * `assign_public_ip`: Internet access to the host via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
+            * `replica_priority`: Host priority for master promotion during [failover](../concepts/replication.md#master-failover).
+            * `assign_public_ip`: Controls whether the host is accessible via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
 
         You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
@@ -358,8 +358,8 @@ To enable data placement on the new shard, run {{ mrd-name }} cluster [rebalanci
 - Management console {#console}
 
   1. In the [management console]({{ link-console-main }}), go to the folder containing the cluster to delete the shard from.
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name and select the **{{ ui-key.yacloud.redis.cluster.switch_shards }}** tab.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the name of your cluster and select the **{{ ui-key.yacloud.redis.cluster.switch_shards }}** tab.
   1. Next to the shard in question, click ![image](../../_assets/console-icons/ellipsis.svg) and select **{{ ui-key.yacloud.mdb.clusters.button_action-delete }}**.
   1. In the window that opens, click **{{ ui-key.yacloud.mdb.cluster.shards.popup-confirm_button_delete }}**.
 
@@ -382,9 +382,9 @@ To enable data placement on the new shard, run {{ mrd-name }} cluster [rebalanci
 
   1. Open the current {{ TF }} configuration file describing your infrastructure.
 
-     For information on how to create such a file, see [Creating a cluster](cluster-create.md).
+     To learn how to create this file, see [Creating a cluster](cluster-create.md).
   1. Delete all shard-related `host` sections from the {{ mrd-name }} cluster description.
-  1. Make sure the settings are correct.
+  1. Validate your configuration.
 
      {% include [terraform-validate](../../_includes/mdb/terraform/validate.md) %}
 
@@ -398,7 +398,7 @@ To enable data placement on the new shard, run {{ mrd-name }} cluster [rebalanci
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -417,7 +417,7 @@ To enable data placement on the new shard, run {{ mrd-name }} cluster [rebalanci
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -458,8 +458,8 @@ For more information, see [{#T}](../concepts/sharding.md#scaling).
 
   To rebalance a cluster:
   1. In the [management console]({{ link-console-main }}), select the folder with your cluster.
-  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}**.
-  1. Click the cluster name.
+  1. [Navigate to](../../console/operations/select-service.md#select-service) the **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-redis }}** service.
+  1. Click the name of your cluster.
   1. In the **{{ ui-key.yacloud.common.overview }}** tab, click **{{ ui-key.yacloud.mdb.cluster.hosts.button_rebalance-cluster-short }}**.
 
   {% note tip %}
@@ -485,7 +485,7 @@ For more information, see [{#T}](../concepts/sharding.md#scaling).
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -500,11 +500,11 @@ For more information, see [{#T}](../concepts/sharding.md#scaling).
 
         You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
-    1. View the [server response](../api-ref/Cluster/rebalance.md#yandex.cloud.operation.Operation) to make sure your request was successful.
+    1. Check the [server response](../api-ref/Cluster/rebalance.md#yandex.cloud.operation.Operation) to make sure your request was successful.
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and place it in an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 

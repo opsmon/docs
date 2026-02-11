@@ -121,7 +121,7 @@ description: Следуя данной инструкции, вы научите
        --header "Authorization: Bearer ${IAM_TOKEN}" \
        --header "x-folder-id: ${FOLDER_ID}" \
        --data "@<путь_до_файла_json>" \
-       "https://llm.{{ api-host }}/foundationModels/v1/completionAsync"
+       "https://ai.{{ api-host }}/foundationModels/v1/completionAsync"
      ```
   
      Где:
@@ -190,4 +190,4 @@ description: Следуя данной инструкции, вы научите
 #### См. также {#see-also}
 
 * [{#T}](../../concepts/generation/index.md)
-* Примеры работы с {{ ml-sdk-name }} на [GitHub](https://github.com/yandex-cloud/yandex-cloud-ml-sdk/tree/master/examples/sync/completions)
+* Примеры работы с {{ ml-sdk-name }} на [GitHub](https://github.com/yandex-cloud/yandex-ai-studio-sdk/tree/master/examples/sync/completions)

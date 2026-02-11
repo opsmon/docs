@@ -5,8 +5,6 @@ description: Follow this tutorial to create scans in {{ sd-full-name }} {{ dspm-
 
 # Creating a {{ dspm-name }} scan
 
-{% include [note-preview-by-request](../../../_includes/note-preview-by-request.md) %}
-
 [Data Security Posture Management](../../concepts/dspm.md) (DSPM) scans [data sources](../../concepts/dspm.md#data-source) – {{ objstorage-full-name }} [buckets](../../../storage/concepts/bucket.md) and {{ yandex-360 }} [Disks]({{ link-yandex }}/support/yandex-360/business/disk/web/{{ lang }}/index.html) – for sensitive information in storages.
 
 Before you start using {{ dspm-name }}, [set up](../../quickstart-overview.md#configure-sd) the default folder to store {{ sd-name }} data.
@@ -29,7 +27,7 @@ Before you start using {{ dspm-name }}, [set up](../../quickstart-overview.md#co
 
       {% include [sa-scan-roles-warning](../../../_includes/security-deck/sa-scan-roles-warning.md) %}
 
-  1. Under **Data search categories**, select the [data categories](../../concepts/dspm.md#data-source) to scan for:
+  1. Under **Data search categories**, select the [data categories](../../concepts/dspm.md#data-source) to scan for, separately for text and images:
 
       {% include [scan-data-types](../../../_includes/security-deck/scan-data-types.md) %}
 
@@ -45,6 +43,8 @@ Before you start using {{ dspm-name }}, [set up](../../quickstart-overview.md#co
 
 ## Creating a scan for {{ yandex-360 }} {#yandex-360}
 
+{% include [note-preview-by-request](../../../_includes/note-preview-by-request.md) %}
+
 {% list tabs group=instructions %}
 
 - {{ sd-name }} UI {#cloud-sd}
@@ -56,7 +56,7 @@ Before you start using {{ dspm-name }}, [set up](../../quickstart-overview.md#co
 
       If necessary, [create](./create-data-source.md) a new data source.
 
-  1. Under **Data search categories**, select the [data categories](../../concepts/dspm.md#data-source) to scan for:
+  1. Under **Data search categories**, select the [data categories](../../concepts/dspm.md#data-source) to scan for, separately for text and images:
 
       {% include [scan-data-types](../../../_includes/security-deck/scan-data-types.md) %}
 

@@ -2,17 +2,13 @@
 
 Using _secure tokens_ , you can restrict access to [CDN resource](./resource.md) files. For example, with secure tokens, you can provide temporary or paid access to files and ensure the security of sensitive data.
 
-Files are accessed via [signed links](#protected-link) with the limited validity period whose query parameters contain a secure token. A CDN server uses a hash to map the received token to the CDN resource's secret key and data provided in an HTTP request and either grants or denies access to the file.
+Files are accessed via [signed links](#protected-link) with a limited validity period, their query parameters containing a secure token. A CDN server uses a hash to map the received token to the CDN resource's secret key and data provided in an HTTP request and either grants or denies access to the file.
 
 You can also use secure tokens to specify a trusted IP address from which to access a CDN resource.
 
 You can [enable](../operations/resources/enable-secure-token.md#enable-secure-token) secure token access to a CDN resource using the [management console]({{ link-console-main }}), [CLI](../../cli/cli-ref/cdn/cli-ref/resource/update.md), [{{ TF }}]({{ tf-provider-resources-link }}/cdn_resource), or [API](../api-ref/Resource/update.md). It may take up to 15 minutes for the changes to take effect.
 
 If you enable access to a CDN resource via a secure token, content is only available via signed links. If you want some content to be accessible via regular links, [create](../operations/resources/create-resource.md) another CDN resource with a separate [origin](./origins.md) for this content.
-
-For more information about secure tokens, see the documentation of the EdgeCenter CDN provider:
-* [Secure token. Feature overview](https://support.edgecenter.ru/knowledge_base/item/268821?sid=57227)
-* [API documentation](https://apidocs.edgecenter.ru/cdn#tag/Resources/operation/change_cdn_resource)
 
 
 ## Signed links {#protected-link}

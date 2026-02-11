@@ -4,7 +4,7 @@
 
 1. {% include [grpc-api-setup-repo](../../grpc-api-setup-repo.md) %}
 
-1. Use the [ClusterService.AddHosts](../../../../managed-valkey/api-ref/grpc/Cluster/addHosts.md) call and make a request, e.g., via {{ api-examples.grpc.tool }}:
+1. Call the [ClusterService.AddHosts](../../../../managed-valkey/api-ref/grpc/Cluster/addHosts.md) method, e.g., via the following {{ api-examples.grpc.tool }} request:
 
     
     ```bash
@@ -31,14 +31,14 @@
     ```
 
 
-    Where `host_specs` represents the host parameters:
+    Where `host_specs` sets the host parameters:
 
     * `zone_id`: [Availability zone](../../../../overview/concepts/geo-scope.md).
     * `subnet_id`: [Subnet ID](../../../../vpc/concepts/network.md#subnet). Specify it if the selected availability zone has two or more subnets.
     * `shard_name`: Shard name for the host. Only used if [cluster sharding](../../../../managed-valkey/concepts/sharding.md) is enabled.
-    * `replica_priority`: Host priority for assignment as a master if the [primary master fails](../../../../managed-valkey/concepts/replication.md#master-failover).
-    * `assign_public_ip`: Internet access to the host via a public IP address, `true` or `false`. Public access is only a possibility if the cluster has TLS support enabled.
+    * `replica_priority`: Host priority for master promotion during [failover](../../../../managed-valkey/concepts/replication.md#master-failover).
+    * `assign_public_ip`: Internet access to the host via a public IP address, `true` or `false`. You can only enable public access if your cluster supports TLS.
 
-    You can get the cluster ID from the [folder’s cluster list](../../../../managed-valkey/operations/cluster-list.md#list-clusters).
+    You can get the cluster ID from the [list of clusters in your folder](../../../../managed-valkey/operations/cluster-list.md#list-clusters).
 
 1. Check the [server response](../../../../managed-valkey/api-ref/grpc/Cluster/addHosts.md#yandex.cloud.operation.Operation) to make sure your request was successful.

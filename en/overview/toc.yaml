@@ -24,8 +24,14 @@ items:
         href: roles-and-resources.md
       - name: Zones of control in MDB
         href: concepts/mdb-responsibilities.md
+      - name: Zones of control in {{ managed-k8s-name }}
+        href: concepts/kubernetes-responsibilities.md
       - name: Deleting user data
         href: concepts/data-deletion.md
+      - name: >-
+          Obtaining the information you need to request the Russian Ministry of
+          Digital Development to whitelist a resource
+        href: concepts/info-for-federal-ip-whitelist.md
   - name: '{{ yandex-cloud }} services'
     expanded: true
     items:

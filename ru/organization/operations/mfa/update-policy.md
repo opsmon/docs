@@ -74,7 +74,7 @@ description: Следуя данной инструкции, вы сможете
      Где:
 
      * `--id` — идентификатор политики MFA.
-     * `--acr-id` — тип [фактора](../../concepts/mfa.md#mfa-factors) аутентификации.
+     * {% include [mfa-acr-id-cli-flag-legend](../../../_includes/organization/mfa-acr-id-cli-flag-legend.md) %}
      * `--ttl` — срок действия учетных данных в днях.
      * `--status` — статус политики: `status-active` — активна, `status-inactive` — неактивна.
      * `--apply-at` — время, по истечении которого политика станет активна.
@@ -82,6 +82,10 @@ description: Следуя данной инструкции, вы сможете
      * `--new-name` — новое имя политики.
      * `--description` — новое описание.
      * `--organization-id` — идентификатор организации.
+
+- API {#api}
+
+  Воспользуйтесь методом REST API [Update](../../../organization/api-ref/MfaEnforcement/update.md) для ресурса [MfaEnforcement](../../../organization/api-ref/MfaEnforcement/index.md) или вызовом gRPC API [MfaEnforcementService/Update](../../../organization/api-ref/grpc/MfaEnforcement/update.md).
 
 {% endlist %}
 

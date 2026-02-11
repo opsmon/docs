@@ -4,14 +4,15 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
 
 {% include [roles-for-kafka-ui](../../_includes/mdb/mkf/roles-for-kafka-ui.md) %}
 
-## Enabling the web interface {#enable-kafka-ui}
+## Enabling the web UI {#enable-kafka-ui}
 
 {% list tabs group=instructions %}
 
 - Management console {#console}
 
-  1. Navigate to the [folder dashboard]({{ link-console-main }}) and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-kafka }}**.
-  1. In the cluster row, click ![image](../../_assets/console-icons/ellipsis.svg), then select **{{ ui-key.yacloud.mdb.clusters.button_action-edit }}**.
+  1. In the [management console]({{ link-console-main }}), navigate to the relevant folder.
+  1. [Go to](../../console/operations/select-service.md#select-service) **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-kafka }}**.
+  1. In the cluster row, click ![image](../../_assets/console-icons/ellipsis.svg) and select **{{ ui-key.yacloud.mdb.clusters.button_action-edit }}**.
   1. Enable **{{ ui-key.yacloud.kafka.field_kafka-ui }}**.
   1. Click **{{ ui-key.yacloud.common.save }}**.
   1. Go to the **{{ ui-key.yacloud.kafka.field_kafka-ui }}** page. 
@@ -22,29 +23,29 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
 
   {% include [default-catalogue](../../_includes/default-catalogue.md) %}
 
-  1. View the description of the CLI command for updating a cluster:
+  1. See the description of the CLI command for updating a cluster:
 
      ```bash
      {{ yc-mdb-kf }} cluster update --help
      ```
-  1. Enable the {{ KF }} web interface on your cluster using `--kafka-ui-enabled`:
+  1. Enable the {{ KF }} web UI on your cluster using `--kafka-ui-enabled`:
 
      ```bash
      {{ yc-mdb-kf }} cluster update <cluster_name_or_ID> \
        --kafka-ui-enabled=true
       ```
-  To find out the cluster name or ID, [get a list of clusters in the folder](cluster-list.md#list-clusters).
+  To find out the cluster name or ID, [get the list of clusters in the folder](cluster-list.md#list-clusters).
 
 - {{ TF }} {#tf}
 
-  1. Open the current {{ TF }} configuration file that defines your infrastructure.
+  1. Open the current {{ TF }} configuration file describing your infrastructure.
   
-     For more information about creating this file, see [Creating clusters](cluster-create.md).
+     Learn how to create this file in [Creating a cluster](cluster-create.md).
   
-  1. To enable the {{ KF }} web interface, add a `config.kafka_ui` section to the cluster description. In this section, provide the `enabled` parameter set to `true`:
+  1. To enable the {{ KF }} web UI, add the `config.kafka_ui` section to the cluster description. In this section, provide `enabled` set to `true`:
 
         ```hcl
-        resource "yandex_mdb_kafka_cluster" "<cluster name>" {
+        resource "yandex_mdb_kafka_cluster" "<cluster_name>" {
           ...
           config {
             ...
@@ -62,13 +63,13 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
 
         {% include [terraform-apply](../../_includes/mdb/terraform/apply.md) %}
 
-    For more information, see this [{{ TF }} provider guide]({{ tf-provider-mkf }}).
+    For more information, see [this {{ TF }} provider guide]({{ tf-provider-mkf }}).
 
     {% include [Terraform timeouts](../../_includes/mdb/mkf/terraform/cluster-timeouts.md) %}
 
 - REST API {#api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and save it as an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
@@ -94,22 +95,22 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
 
         Where:
 
-        * `updateMask`: Comma-separated list of settings you want to update. Specify `configSpec.kafkaUiConfig.enabled` to update the setting for enabling {{ kafka-ui }}.
+        * `updateMask`: Comma-separated string of settings you want to update. Specify `configSpec.kafkaUiConfig.enabled` to update the setting for enabling {{ kafka-ui }}.
         * `configSpec.kafkaUiConfig.enabled`: Set to `true` to enable {{ kafka-ui }}.
 
-       You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
+       You can get the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
     1. Check the [server response](../api-ref/Cluster/update.md#responses) to make sure your request was successful.
 
 - gRPC API {#grpc-api}
 
-    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and set it as an environment variable:
+    1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
 
         {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
     1. {% include [grpc-api-setup-repo](../../_includes/mdb/grpc-api-setup-repo.md) %}
 
-    1. Use the [ClusterService/Update](../api-ref/grpc/Cluster/update.md) call and send the following request, e.g., via {{ api-examples.grpc.tool }}:
+    1. Call the [ClusterService/Update](../api-ref/grpc/Cluster/update.md) method, e.g., via the following {{ api-examples.grpc.tool }} request:
 
         {% include [note-grpc-updatemask](../../_includes/note-grpc-api-updatemask.md) %}
 
@@ -142,13 +143,13 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
         * `update_mask`: List of settings you want to update as an array of strings (`paths[]`). Specify `config_spec.kafka_ui_config.enabled` to update the setting for enabling {{ kafka-ui }}.
         * `config_spec.kafka_ui_config.enabled`: Set to `true` to enable {{ kafka-ui }}.
 
-        You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
+        You can get the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
     1. Check the [server response](../api-ref/grpc/Cluster/update.md#yandex.cloud.operation.Operation) to make sure your request was successful.
 
 {% endlist %}
 
-## Getting a link to the web interface {#get-link}
+## Getting a link to the web UI {#get-link}
 
 {% list tabs group=instructions %}
 
@@ -173,7 +174,7 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
 
 - REST API {#api}
 
-  1. [Get an IAM token for API authentication](../api-ref/authentication.md) and set it as an environment variable:
+  1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
   
      {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
   
@@ -186,21 +187,21 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
          --url 'https://{{ api-host-mdb }}/managed-kafka/v1/clusters/<cluster_ID>'
      ```
   
-     You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
+     You can get the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
   
   1. Check the [server response](../api-ref/Cluster/get.md#yandex.cloud.mdb.kafka.v1.Cluster) to make sure your request was successful.
 
-     You can find the link to the {{ KF }} web interface in the `config.kafkaUiConfig.url` parameter.
+     You can find the link to the {{ KF }} web UI in the `config.kafkaUiConfig.url` parameter.
 
 - gRPC API {#grpc-api}
 
-  1. [Get an IAM token for API authentication](../api-ref/authentication.md) and set it as an environment variable:
+  1. [Get an IAM token for API authentication](../api-ref/authentication.md) and put it into an environment variable:
 
      {% include [api-auth-token](../../_includes/mdb/api-auth-token.md) %}
 
   1. {% include [grpc-api-setup-repo](../../_includes/mdb/grpc-api-setup-repo.md) %}
 
-  1. Use the [ClusterService/Get](../api-ref/grpc/Cluster/get.md) call and send the following request, e.g., via {{ api-examples.grpc.tool }}:
+  1. Call the [ClusterService/Get](../api-ref/grpc/Cluster/get.md) method, e.g., via the following {{ api-examples.grpc.tool }} request:
 
       ```bash
       grpcurl \
@@ -216,7 +217,7 @@ To work with {{ mkf-name }} clusters, you can use {{ kafka-ui }}. It will help y
           yandex.cloud.mdb.kafka.v1.ClusterService.Get
       ```
 
-     You can request the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
+     You can get the cluster ID with the [list of clusters in the folder](cluster-list.md#list-clusters).
 
   1. Check the [server response](../api-ref/grpc/Cluster/get.md#yandex.cloud.mdb.kafka.v1.Cluster) to make sure your request was successful.
 

@@ -88,11 +88,11 @@ Learn how to change the [availability zone](../../../overview/concepts/geo-scope
     {% include [node-name](../../../_includes/managed-kubernetes/node-name.md) %}
 
   * `--template-labels`: Change the [node group cloud labels](../../../resource-manager/concepts/labels.md) in `<label_name>=<label_value>` format. You can specify multiple labels separated by commas.
-  * `--latest-revision`: Get all available updates for the current [{{ managed-k8s-name }}](../../concepts/index.md#master) master version.
+  * `--latest-revision`: Get all available updates for the current [{{ managed-k8s-name }} master](../../concepts/index.md#master) version.
   * Scaling settings:
 
     * `--fixed-size`: Change the fixed number of nodes in a {{ managed-k8s-name }} node group.
-    * `--auto-scale`: Change the [autoscaling settings of the {{ managed-k8s-name }}](../../concepts/node-group/cluster-autoscaler.md) cluster:
+    * `--auto-scale`: Change the [autoscaling settings of the {{ managed-k8s-name }} cluster](../../concepts/node-group/cluster-autoscaler.md):
 
       * `min`: Minimum number of nodes in the group.
       * `max`: Maximum number of nodes in the group.
@@ -109,7 +109,7 @@ Learn how to change the [availability zone](../../../overview/concepts/geo-scope
   {% note warning %}
 
   * The `user-data` metadata key is not supported for VM tuning or user data transmission.
-  * To manage SSH keys, [use the `ssh-keys`](../../../compute/concepts/vm-metadata.md) key.
+  * To manage SSH keys, [use the `ssh-keys` key](../../../compute/concepts/vm-metadata.md).
   * To tune your nodes, use privileged DaemonSets, e.g., [sysctl-tuner](https://github.com/elemir/yc-recipes/tree/master/sysctl-tuner).
 
   {% endnote %}
@@ -119,7 +119,7 @@ Learn how to change the [availability zone](../../../overview/concepts/geo-scope
   To update a {{ managed-k8s-name }} node group:
   1. Open the current {{ TF }} configuration file describing the {{ managed-k8s-name }} node group.
 
-     Learn how to create this file in [{#T}](node-group-create.md).
+     For more information about creating this file, see [{#T}](node-group-create.md).
   1. Edit the {{ managed-k8s-name }} node group description properties.
 
      * To change the scaling settings, edit the `scale_policy` section as follows:
@@ -159,7 +159,7 @@ Learn how to change the [availability zone](../../../overview/concepts/geo-scope
 
      {% include [terraform-validate](../../../_includes/mdb/terraform/validate.md) %}
 
-  1. Confirm updating the resources.
+  1. Confirm resource changes.
 
      {% include [terraform-apply](../../../_includes/mdb/terraform/apply.md) %}
 
@@ -188,7 +188,7 @@ Learn how to change the [availability zone](../../../overview/concepts/geo-scope
 - Management console {#console}
 
   1. Navigate to the folder dashboard and select **{{ ui-key.yacloud.iam.folder.dashboard.label_managed-kubernetes }}**.
-  1. Click the cluster name.
+  1. Click the name of your cluster.
   1. Navigate to the **{{ ui-key.yacloud.k8s.nodes.label_node-groups }}** tab.
   1. Select the node group you need.
   1. Click **{{ ui-key.yacloud.common.edit }}** in the top-right corner.
@@ -244,7 +244,7 @@ Adding [taints](../../concepts/index.md#taints-tolerations) results in recreatio
 
   1. Open the current {{ TF }} configuration file describing the {{ managed-k8s-name }} node group.
 
-     Learn how to create this file in [{#T}](node-group-create.md).
+     For more information about creating this file, see [{#T}](node-group-create.md).
 
   1. Add the `node_taints` section to the node group description:
 
@@ -271,7 +271,7 @@ Adding [taints](../../concepts/index.md#taints-tolerations) results in recreatio
 
      {% include [terraform-validate](../../../_includes/mdb/terraform/validate.md) %}
 
-  1. Confirm updating the resources.
+  1. Confirm resource changes.
 
      {% include [terraform-apply](../../../_includes/mdb/terraform/apply.md) %}
 
@@ -302,7 +302,7 @@ Removing [taints](../../concepts/index.md#taints-tolerations) results in recreat
 
   1. Open the current {{ TF }} configuration file describing the {{ managed-k8s-name }} node group.
 
-     Learn how to create this file in [{#T}](node-group-create.md).
+     For more information about creating this file, see [{#T}](node-group-create.md).
 
   1. In the node group description, remove the taints you no longer need under `node_taints`.
 
@@ -310,7 +310,7 @@ Removing [taints](../../concepts/index.md#taints-tolerations) results in recreat
 
      {% include [terraform-validate](../../../_includes/mdb/terraform/validate.md) %}
 
-  1. Confirm updating the resources.
+  1. Confirm resource changes.
 
      {% include [terraform-apply](../../../_includes/mdb/terraform/apply.md) %}
 
@@ -374,7 +374,7 @@ You can perform the following actions with [cloud labels](../../concepts/index.m
 
   1. Open the current {{ TF }} configuration file describing the {{ managed-k8s-name }} node group.
 
-     Learn how to create this file in [{#T}](node-group-create.md).
+     For more information about creating this file, see [{#T}](node-group-create.md).
   1. Add the `labels` property to the {{ managed-k8s-name }} node group description:
 
      ```hcl
@@ -392,7 +392,7 @@ You can perform the following actions with [cloud labels](../../concepts/index.m
 
      {% include [terraform-validate](../../../_includes/mdb/terraform/validate.md) %}
 
-  1. Confirm updating the resources.
+  1. Confirm resource changes.
 
      {% include [terraform-apply](../../../_includes/mdb/terraform/apply.md) %}
 
@@ -442,7 +442,7 @@ You can perform the following actions with [cloud labels](../../concepts/index.m
 
   1. Open the current {{ TF }} configuration file describing the {{ managed-k8s-name }} node group.
 
-     Learn how to create this file in [{#T}](node-group-create.md).
+     For more information about creating this file, see [{#T}](node-group-create.md).
   1. Edit the `labels` property in the {{ managed-k8s-name }} node group description:
 
      ```hcl
@@ -461,7 +461,7 @@ You can perform the following actions with [cloud labels](../../concepts/index.m
 
      {% include [terraform-validate](../../../_includes/mdb/terraform/validate.md) %}
 
-  1. Confirm updating the resources.
+  1. Confirm resource changes.
 
      {% include [terraform-apply](../../../_includes/mdb/terraform/apply.md) %}
 
@@ -506,13 +506,13 @@ You can perform the following actions with [cloud labels](../../concepts/index.m
 
   1. Open the current {{ TF }} configuration file describing the {{ managed-k8s-name }} node group.
 
-     Learn how to create this file in [{#T}](node-group-create.md).
+     For more information about creating this file, see [{#T}](node-group-create.md).
   1. In the {{ managed-k8s-name }} node group description, remove the cloud labels you no longer need under `labels`.
   1. Make sure the configuration files are correct.
 
      {% include [terraform-validate](../../../_includes/mdb/terraform/validate.md) %}
 
-  1. Confirm updating the resources.
+  1. Confirm resource changes.
 
      {% include [terraform-apply](../../../_includes/mdb/terraform/apply.md) %}
 
@@ -705,7 +705,7 @@ After you update the metadata, the node group status will temporarily change to 
 
         {% include [terraform-validate](../../../_includes/mdb/terraform/validate.md) %}
 
-    1. Confirm updating the resources.
+    1. Confirm resource changes.
 
         {% include [terraform-apply](../../../_includes/mdb/terraform/apply.md) %}
 
@@ -721,11 +721,11 @@ After you update the metadata, the node group status will temporarily change to 
 
         * Node group ID in the `nodeGroupId` parameter.
 
-        * The `updateMask` parameter set to `nodeTemplate.metadata`.
+        * `updateMask` parameter set to `nodeTemplate.metadata`.
 
             {% include [Note API updateMask](../../../_includes/note-api-updatemask.md) %}
 
-        * The `nodeTemplate.metadata` parameter listing the node group metadata.
+        * `nodeTemplate.metadata` parameter listing the node group metadata.
 
             Edit the metadata list you got in the previous step: add, edit, or delete `key=value` pairs. Then provide the updated list in the `nodeTemplate.metadata` parameter.
 

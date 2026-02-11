@@ -37,7 +37,7 @@ items:
         href: security/different-folders-services.md
       - name: Basic SWS setup
         href: security/sws-basic-protection.md
-      - name: Emergency DDoS protection in {{ alb-name }}, L7
+      - name: Emergency L7 DDoS protection in {{ alb-name }}
         href: security/sws-protection-ongoing-ddos.md
       - name: >-
           Migrating services from an NLB to an L7 ALB to enable {{ sws-name }}
@@ -158,7 +158,7 @@ items:
         hidden: true
       - name: Configuring alerts and dashboards in {{ monitoring-name }}
         href: security/alerts-monitoring.md
-      - name: Uploading audit logs to MaxPatrol SIEM
+      - name: Exporting audit logs to MaxPatrol SIEM
         href: security/maxpatrol.md
       - name: Uploading audit logs to Splunk SIEM
         href: security/export-logs-to-splunk.md
@@ -166,13 +166,13 @@ items:
         href: security/export-logs-to-arcsight.md
       - name: Managing identity federations
         items:
-          - name: Authentication using Active Directory
+          - name: Active Directory authentication
             href: security/integration-adfs.md
-          - name: Authentication using Google Workspace
+          - name: Google Workspace authentication
             href: security/integration-gworkspace.md
-          - name: Authentication using {{ microsoft-idp.entra-id-full }}
+          - name: '{{ microsoft-idp.entra-id-full }} authentication'
             href: security/integration-azure.md
-          - name: Authentication using Keycloak
+          - name: Keycloak authentication
             href: security/integration-keycloak.md
           - name: User group mapping
             items:
@@ -255,11 +255,43 @@ items:
           Transferring a {{ mgp-name }} cluster's logs to {{
           cloud-logging-full-name }}
         href: security/mgp-to-cloud-logging.md
+      - name: >-
+          Obtaining the information you need to request the Russian Ministry of
+          Digital Development to whitelist a resource
+        href: security/info-for-federal-ip-whitelist.md
   - name: Storing and recovering data
     items:
       - name: All tutorials
         href: archive/index.md
-      - name: Migrating data to {{ yandex-cloud }} using Hystax Acura
+      - name: Backing up to {{ objstorage-name }}
+        items:
+          - name: Overview
+            href: archive/storage-backup-overview.md
+          - name: Backing up to {{ objstorage-name }} with AWS S3 Sync
+            href: archive/storage-backup-aws-s3-sync.md
+          - name: Backing up to {{ objstorage-name }} with rclone
+            href: archive/storage-backup-rclone.md
+          - name: Backing up to {{ objstorage-name }} with GeeseFS
+            href: archive/storage-backup-geesefs.md
+          - name: >-
+              Backing up to {{ objstorage-name }} with MSP360 Backup (CloudBerry
+              Desktop Backup)
+            href: archive/object-storage-cloudberry.md
+          - name: Backing up to {{ objstorage-name }} with Duplicati
+            href: archive/object-storage-duplicati.md
+          - name: Backing up to {{ objstorage-name }} with Bacula
+            href: archive/backup-with-bacula.md
+          - name: Backing up to {{ objstorage-name }} with Veritas Backup Exec
+            href: archive/object-storage-veritas.md
+          - name: Backing up to {{ objstorage-name }} with Veeam Backup
+            href: archive/backup-with-veeam.md
+          - name: Backing up a VM with Hystax Acura Backup
+            href: infrastructure-management/hystax-backup.md
+          - name: >-
+              Backing up a {{ managed-k8s-name }} cluster to {{ objstorage-name
+              }}
+            href: archive/kubernetes-backup.md
+      - name: Migrating to {{ yandex-cloud }} with Hystax Acura
         href: infrastructure-management/hystax-migration.md
       - name: Fault protection with Hystax Acura
         href: infrastructure-management/hystax-disaster-recovery.md
@@ -273,27 +305,11 @@ items:
             href: archive/single-node-file-server/terraform.md
       - name: Configuring an SFTP server based on CentOS 7
         href: archive/backup-and-archive-to-sftp.md
-      - name: VM backups using Hystax Acura
-        href: infrastructure-management/hystax-backup.md
-      - name: >-
-          Backing up to {{ objstorage-name }} with MSP360 Backup (CloudBerry
-          Desktop Backup)
-        href: archive/object-storage-cloudberry.md
-      - name: Backing up to {{ objstorage-name }} with Duplicati
-        href: archive/object-storage-duplicati.md
-      - name: Backing up to {{ objstorage-name }} with Bacula
-        href: archive/backup-with-bacula.md
-      - name: Backing up to {{ objstorage-name }} with Veeam Backup
-        href: archive/backup-with-veeam.md
-      - name: Backing up to {{ objstorage-name }} with Veritas Backup Exec
-        href: archive/object-storage-veritas.md
-      - name: '{{ managed-k8s-name }} cluster backups in {{ objstorage-name }}'
-        href: archive/kubernetes-backup.md
       - name: Deploying GlusterFS in high availability mode
         href: archive/ha-regional-glusterfs.md
       - name: Deploying GlusterFS in high performance mode
         href: archive/ha-regional-glusterfs-high-performance.md
-      - name: Associating a {{ backup-name }} policy to a VM automatically
+      - name: Associating a {{ backup-name }} policy with a VM automatically
         items:
           - name: Overview
             href: archive/vm-with-backup-policy/index.md
@@ -363,6 +379,10 @@ items:
         href: testing/loadtesting-gitlab-ci.md
       - name: Deploying {{ GLR }} on a {{ compute-name }} virtual machine
         href: dev/install-gitlab-runner.md
+      - name: >-
+          Deploying a {{ src-full-name }} worker on a {{ compute-name }} virtual
+          machine
+        href: dev/self-hosted-worker-sourcecraft.md
       - name: Comparing load test results
         href: testing/loadtesting-results-compare.md
       - name: >-
@@ -377,6 +397,10 @@ items:
         href: routing/web-service.md
       - name: Cost analysis by resource using {{ objstorage-name }}
         href: infrastructure/billing-resource-detailing.md
+      - name: >-
+          Obtaining the information you need to request the Russian Ministry of
+          Digital Development to whitelist a resource
+        href: infrastructure/info-for-federal-ip-whitelist.md
       - name: Fault tolerance and scaling
         items:
           - name: Configuring a fault-tolerant architecture in {{ yandex-cloud }}
@@ -759,6 +783,8 @@ items:
             href: web/flask.md
           - name: Hosting a static Gatsby website
             href: web/gatsby-static-website.md
+          - name: Installing Ghost CMS CloudApp
+            href: web/ghost-cms-cloudapp.md
           - name: Migrating to {{ cdn-name }} from a third-party CDN provider
             href: web/migrate-to-yc-cdn.md
           - name: Getting website traffic statistics with S3 Select
@@ -809,7 +835,7 @@ items:
         items:
           - name: Creating a skill for Alice
             href: serverless/alice-skill.md
-          - name: Creating a skill for Alice and a website with authorization
+          - name: Building a skill for Alice and a website with authorization
             href: serverless/alice-shareable-todolist.md
       - name: Other
         items:
@@ -901,7 +927,7 @@ items:
           Delivering data from {{ yds-name }} to {{ mkf-name }} using {{
           data-transfer-name }}
         href: dataplatform/yds-to-kafka.md
-      - name: Change data capture (CDC) from {{ ydb-short-name }} to {{ DS }}
+      - name: '{{ ydb-short-name }} change data capture and delivery to {{ DS }}'
         href: dataplatform/ydb-to-yds.md
       - name: Configuring Kafka Connect to work with a {{ mkf-name }} cluster
         href: dataplatform/kafka-connect.md
@@ -915,7 +941,7 @@ items:
             href: dataplatform/schema-registry-overview.md
           - name: Using {{ mkf-msr }} with {{ mkf-name }}
             href: dataplatform/managed-schema-registry.md
-          - name: Using {{ mkf-msr }} with {{ mkf-name }} via the REST API
+          - name: Using {{ mkf-msr }} with {{ mkf-name }} via REST API
             href: dataplatform/managed-schema-registry-rest.md
           - name: Using Confluent Schema Registry with {{ mkf-name }}
             href: dataplatform/confluent-schema-registry.md
@@ -1497,7 +1523,7 @@ items:
         href: serverless/telegram-ai-bot-workflows.md
       - name: Developing a custom integration in {{ api-gw-name }}
         href: serverless/api-gw-integration.md
-      - name: Developing CRUD APIs for movie services
+      - name: Developing CRUD APIs for a movie service
         href: serverless/movies-database.md
       - name: Building a CI/CD pipeline in {{ GL }}
         href: serverless/ci-cd-serverless.md
@@ -1525,7 +1551,7 @@ items:
         href: serverless/grafana-logs-plugin.md
       - name: Canary release of {{ sf-name }}
         href: serverless/canary-release.md
-      - name: Interactive debugging of {{ sf-name }}
+      - name: Interactive debugging of functions in {{ sf-name }}
         href: serverless/serverless-live-debug.md
       - name: Creating a Node.js function using TypeScript
         href: serverless/nodejs-typescript.md
@@ -1533,7 +1559,7 @@ items:
         href: serverless/deploy-app-container.md
       - name: >-
           Streaming {{ postbox-name }} events to {{ yds-name }} and analyzing
-          them with {{ datalens-name }}
+          them using {{ datalens-name }}
         href: serverless/events-from-postbox-to-yds.md
       - name: >-
           Using {{ api-gw-name }} to set up speech synthesis in {{
@@ -1545,7 +1571,7 @@ items:
         href: serverless/connect-from-cf.md
       - name: >-
           Connecting to a {{ ydb-short-name }} database from a {{ sf-name }}
-          function in Node.js
+          Node.js function
         href: serverless/connect-from-cf-nodejs.md
       - name: '{{ api-gw-name }} protection with {{ sws-name }}'
         href: serverless/api-gw-sws-integration.md
@@ -1580,8 +1606,8 @@ items:
           - name: Terraform
             href: serverless/forms-and-datalens-integration/terraform.md
       - name: >-
-          Creating a {{ postbox-full-name }} address and checking domain
-          ownership with {{ TF }}
+          Creating a {{ postbox-full-name }} address and domain ownership
+          verification with {{ TF }}
         href: serverless/domain-identity-creating.md
       - name: Sending emails in {{ postbox-full-name }} using the AWS SDK
         items:
@@ -1595,6 +1621,8 @@ items:
             href: serverless/send-emails-aws-sdk-python.md
       - name: Creating an AI agent with {{ sf-full-name }}
         href: serverless/create-ai-agent-function.md
+      - name: Creating an AI agent with response streaming via web sockets
+        href: serverless/streaming-openai-agent.md
       - name: Configuring Postfix to send emails via {{ postbox-full-name }}
         href: serverless/postfix-integration.md
       - name: '{{ postbox-full-name }} integration with external systems via webhooks'

@@ -75,7 +75,7 @@
 1. Узнайте [IP-адрес](../../vpc/concepts/address.md) Ingress-контроллера (значение в колонке `EXTERNAL-IP`):
 
    ```bash
-   kubectl get svc
+   kubectl get svc -n <пространство_имен_приложения_Ingress_NGINX>
    ```
 
    Результат:
@@ -158,7 +158,7 @@
     spec:
       acme:
         server: https://acme-v02.api.letsencrypt.org/directory
-        email: <ваш_email>
+        email: <электронная_почта_для_уведомлений_от_Lets_Encrypt>
         privateKeySecretRef:
           name: http01-clusterissuer-secret
         solvers:

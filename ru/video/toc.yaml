@@ -183,8 +183,6 @@ items:
                         href: api-ref/javascript/interfaces/PlayerSdkSourceParams.md
                       - name: PlayerSdkState
                         href: api-ref/javascript/interfaces/PlayerSdkState.md
-      - name: Решение проблем
-        href: troubleshooting.md
       - name: Защищенный контент
         hidden: true
         href: troubleshooting-drm.md
@@ -392,6 +390,8 @@ items:
                 href: api-ref/grpc/Video/batchGetPlayerURLs.md
               - name: GetManifests
                 href: api-ref/grpc/Video/getManifests.md
+              - name: GenerateDownloadURL
+                href: api-ref/grpc/Video/generateDownloadURL.md
       - name: REST (англ.)
         items:
           - name: Overview
@@ -582,7 +582,17 @@ items:
                 href: api-ref/Video/batchGetPlayerURLs.md
               - name: GetManifests
                 href: api-ref/Video/getManifests.md
+              - name: GenerateDownloadURL
+                href: api-ref/Video/generateDownloadURL.md
   - name: Аудитные логи {{ at-name }}
     href: at-ref.md
   - name: История изменений
     href: release-notes.md
+  - name: Решение проблем
+    items:
+      - name: Обзор
+        href: troubleshooting/index.md
+      - name: Видеоплеер
+        href: troubleshooting/player.md
+      - name: Загрузка и обработка видео
+        href: troubleshooting/video-processing.md
